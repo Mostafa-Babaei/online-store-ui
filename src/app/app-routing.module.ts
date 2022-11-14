@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ForgetPasswordComponent } from './account/forget-password/forget-password.component';
 import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ const routes: Routes = [
   {path:"",component:AppComponent},
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
+  {path:"forget-password",component:ForgetPasswordComponent},
   {path:"404",component:NotfoundComponent},
   {path:"**",redirectTo:"404"},
 ];
