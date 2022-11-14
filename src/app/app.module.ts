@@ -13,6 +13,7 @@ import { EditComponent } from './admin/category/edit/edit.component';
 import { HeaderComponent } from './share/header/header.component';
 import { MenuComponent } from './share/menu/menu.component';
 import { FooterComponent } from './share/footer/footer.component';
+import { AuthPartialComponent } from './share/auth-partial/auth-partial.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FooterComponent } from './share/footer/footer.component';
     EditComponent,
     HeaderComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    AuthPartialComponent
   ],
   imports: [
     BrowserModule,
