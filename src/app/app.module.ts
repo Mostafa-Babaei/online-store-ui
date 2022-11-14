@@ -14,6 +14,7 @@ import { HeaderComponent } from './share/header/header.component';
 import { MenuComponent } from './share/menu/menu.component';
 import { FooterComponent } from './share/footer/footer.component';
 import { AuthPartialComponent } from './share/auth-partial/auth-partial.component';
+import { NotfoundComponent } from './share/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AuthPartialComponent } from './share/auth-partial/auth-partial.componen
     HeaderComponent,
     MenuComponent,
     FooterComponent,
-    AuthPartialComponent
+    AuthPartialComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

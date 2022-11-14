@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthPartialComponent implements OnInit {
   constructor() { }
-  isLoggedUser: boolean | undefined;
+  isLoggedUser!: boolean;
 
   ngOnInit(): void {
     this.isLoggedUser = false;

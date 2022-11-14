@@ -1,9 +1,13 @@
-
-<h1>ثبت نام</h1>
-<div *ng-if="isLoggedUser==true">
-    <h3>Loggin</h3>
+<div *ngIf="isLoggedUser" class="d-flex">
+    <li>
+        <a class="nav-link">
+            <i class="bi bi-person-circle"></i>
+            پنل کاربری
+        </a>
+    </li>
+    <li><a href="" routerlink="/user/Login" class="nav-link"><i class="bi bi-x-circle-fill"></i> خروج</a></li>
 </div>
-<div *ng-if="isLoggedUser==false">
-    <li><a href="#" routerlink="/user/Register" class="nav-link"><i class="bi bi-box-arrow-right"></i> Sign Up</a></li>
-    <li><a href="#" routerlink="/user/Login" class="nav-link"><i class="bi bi-key"></i> Login</a></li>
+<div class="d-flex" *ngIf="!isLoggedUser">
+    <li><a href="" routerlink="/Register" class="nav-link"><i class="bi bi-box-arrow-right"></i> Sign Up</a></li>
+    <li><a href="" routerlink="/Login" class="nav-link"><i class="bi bi-key"></i> Login</a></li>
 </div>
