@@ -3,10 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './account/login/login.component';
+import { RegisterComponent } from './account/register/register.component';
+import { ForgetPasswordComponent } from './account/forget-password/forget-password.component';
+import { HomeComponent } from './home/home.component';
+import { ListComponent } from './admin/user/list/list.component';
+import { AddComponent } from './admin/category/add/add.component';
+import { EditComponent } from './admin/category/edit/edit.component';
+import { HeaderComponent } from './share/header/header.component';
+import { MenuComponent } from './share/menu/menu.component';
+import { FooterComponent } from './share/footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    ForgetPasswordComponent,
+    HomeComponent,
+    ListComponent,
+    AddComponent,
+    EditComponent,
+    HeaderComponent,
+    MenuComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
