@@ -7,12 +7,13 @@ import { AppComponent } from './app.component';
 import { NotfoundComponent } from './share/notfound/notfound.component';
 
 const routes: Routes = [
-  {path:"",component:AppComponent},
-  {path:"login",component:LoginComponent},
-  {path:"register",component:RegisterComponent},
-  {path:"forget-password",component:ForgetPasswordComponent},
-  {path:"404",component:NotfoundComponent},
-  {path:"**",redirectTo:"404"},
+  { path: "", component: AppComponent },
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
+  { path: "forget-password", component: ForgetPasswordComponent },
+  { path: "404", component: NotfoundComponent },
+  // {path:"**",redirectTo:"404"},
+  { path: "**", component: NotfoundComponent }
 ];
 
 @NgModule({

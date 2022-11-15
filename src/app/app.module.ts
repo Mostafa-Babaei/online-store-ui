@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +18,7 @@ import { FooterComponent } from './share/footer/footer.component';
 import { AuthPartialComponent } from './share/auth-partial/auth-partial.component';
 import { NotfoundComponent } from './share/notfound/notfound.component';
 
+import { AccountService } from 'src/services/account/account.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,9 +37,13 @@ import { NotfoundComponent } from './share/notfound/notfound.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AccountService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
