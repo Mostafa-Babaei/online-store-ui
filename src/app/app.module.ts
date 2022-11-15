@@ -19,6 +19,11 @@ import { AuthPartialComponent } from './share/auth-partial/auth-partial.componen
 import { NotfoundComponent } from './share/notfound/notfound.component';
 
 import { AccountService } from 'src/services/account/account.service';
+
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +44,10 @@ import { AccountService } from 'src/services/account/account.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [
     AccountService

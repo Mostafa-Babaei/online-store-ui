@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Login } from 'src/Models/account/login.model';
 import { AccountService } from 'src/services/account/account.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   logginedUser: boolean = false;
   loginDto: Login;
-  constructor(private accountService: AccountService,private router: Router) {
+  constructor(private accountService: AccountService,private router: Router,private toastr: ToastrService) {
 
   }
 
@@ -25,7 +26,10 @@ export class LoginComponent implements OnInit {
   loginUser() {
     this.logginedUser = this.accountService.login(this.loginDto);
     if (this.logginedUser) {
-      this.router.navigate(['/register'])
+      this.toastr.success("خوش آمدید")
+      // this.router.navigate(['/register'])
+    }else{
+      this.toastr.error("خطا در ورود کاربر")
     }
   }
 
