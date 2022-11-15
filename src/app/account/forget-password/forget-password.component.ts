@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AccountService } from 'src/services/account/account.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-forget-password',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgetPasswordComponent implements OnInit {
 
-  constructor() { }
+  constructor(private accountService: AccountService, private router: Router, private toastr: ToastrService) {
+  }
+
 
   ngOnInit(): void {
+  }
+
+  sendNewPassword(){
+    this.toastr.success("رمز جدید برای شما ارسال شد")
   }
 
 }

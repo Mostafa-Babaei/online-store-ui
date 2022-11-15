@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent implements OnInit {
   logginedUser: boolean = false;
   loginDto: Login;
-  constructor(private accountService: AccountService,private router: Router,private toastr: ToastrService) {
+  constructor(private accountService: AccountService, private router: Router, private toastr: ToastrService) {
 
   }
 
@@ -26,9 +26,9 @@ export class LoginComponent implements OnInit {
   loginUser() {
     this.logginedUser = this.accountService.login(this.loginDto);
     if (this.logginedUser) {
+      this.router.navigate(['/register'])
       this.toastr.success("خوش آمدید")
-      // this.router.navigate(['/register'])
-    }else{
+    } else {
       this.toastr.error("خطا در ورود کاربر")
     }
   }
