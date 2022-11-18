@@ -3,6 +3,7 @@ import { Login } from 'src/Models/account/login.model';
 import { AccountService } from 'src/services/account/account.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Apiresult } from 'src/Models/apiresult';
 
 @Component({
   selector: 'app-login',
@@ -24,13 +25,19 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
-    this.logginedUser = this.accountService.login(this.loginDto);
-    if (this.logginedUser) {
-      this.router.navigate(['/register'])
-      this.toastr.success("خوش آمدید")
-    } else {
-      this.toastr.error("خطا در ورود کاربر")
-    }
+    this.accountService.login(this.loginDto).subscribe(
+      (response) => {
+        console.log(response);
+        if (response.isSuccess) {
+          this.toastr.success(response.message);
+          this.router.navigate(['/register'])
+        } else {
+          this.toastr.error(response.message);
+        }
+      },
+      (error) => {
+        this.toastr.error("خطای پیش بینی نشده");
+      });
   }
 
 }
