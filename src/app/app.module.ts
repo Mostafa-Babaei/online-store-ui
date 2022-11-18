@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,10 +19,11 @@ import { AuthPartialComponent } from './share/auth-partial/auth-partial.componen
 import { NotfoundComponent } from './share/notfound/notfound.component';
 
 import { AccountService } from 'src/services/account/account.service';
-
+import { BrowserStorageService } from 'src/services/share/browser-storage.service'
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CustomInterceptorService } from 'src/services/custom-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,13 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [
-    AccountService
+    AccountService,
+    BrowserStorageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
