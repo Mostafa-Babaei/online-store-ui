@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     this.loginDto = new Login;
     this.loginDto.username = "mostafababaee@gmail.com";
     this.loginDto.password = "33552038";
-    console.log("Test : " + this.loginDto);
   }
 
   loginUser() {
