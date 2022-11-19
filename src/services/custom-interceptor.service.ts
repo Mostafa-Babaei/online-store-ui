@@ -1,8 +1,10 @@
 import { HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { catchError, Observable, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
 import { BrowserStorageService } from './share/browser-storage.service';
+import { LoadingService } from './share/loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ import { BrowserStorageService } from './share/browser-storage.service';
 
 export class CustomInterceptorService implements HttpInterceptor {
   constructor(private browserStorageService: BrowserStorageService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService, private loader: LoadingService) { }
 
   token = this.browserStorageService.getLocal("token");
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -18,13 +20,20 @@ export class CustomInterceptorService implements HttpInterceptor {
     return next.handle(auth)
       .pipe(
         catchError(err => {
-          console.log(err);
+          this.loader.lodaingOn();
+          console.log('loading on ...');
+          setTimeout(function () {
+            console.log('2');
+        }, 4000);
           this.showError(err);
           return throwError(err);
+        }),
+        finalize(() => {
+          console.log('loading off ...');
+          this.loader.lodaingOff();
         })
       )
   }
-
   showError(err: any) {
     switch (err.status) {
       case 500:

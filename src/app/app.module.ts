@@ -9,7 +9,6 @@ import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
 import { ForgetPasswordComponent } from './account/forget-password/forget-password.component';
 import { HomeComponent } from './home/home.component';
-import { ListComponent } from './admin/user/list/list.component';
 import { AddComponent } from './admin/category/add/add.component';
 import { EditComponent } from './admin/category/edit/edit.component';
 import { HeaderComponent } from './share/header/header.component';
@@ -26,6 +25,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { CustomInterceptorService } from 'src/services/custom-interceptor.service';
 import { IndexComponent } from './admin/category/index/index.component';
 import { CreateComponent } from './admin/product/create/create.component';
+import { LoadingComponent } from './share/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,6 @@ import { CreateComponent } from './admin/product/create/create.component';
     RegisterComponent,
     ForgetPasswordComponent,
     HomeComponent,
-    ListComponent,
     AddComponent,
     EditComponent,
     HeaderComponent,
@@ -43,7 +42,8 @@ import { CreateComponent } from './admin/product/create/create.component';
     AuthPartialComponent,
     NotfoundComponent,
     IndexComponent,
-    CreateComponent
+    CreateComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
