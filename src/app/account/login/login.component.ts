@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
           this.toastr.success(response.message);
           console.log(response.data);
           this.browserStorageService.setLocal("token", response.data);
-          // localStorage.setItem("token", JSON.stringify(response.data));
           this.router.navigate(['/register'])
+          window.location.reload();
         } else {
           this.toastr.error(response.message);
         }
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       });
   }
 
- 
+
 
   resetPassword() {
     let token = this.browserStorageService.getLocal("token");

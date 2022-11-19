@@ -5,6 +5,7 @@ import { GlobalConstants } from 'src/Models/common/global-constants';
 import { Apiresult } from 'src/Models/apiresult';
 import { Observable } from 'rxjs';
 import { BrowserStorageService } from '../share/browser-storage.service';
+import { Paging } from 'src/Models/common/paging';
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +28,9 @@ export class AccountService  {
   resetPassword(email: string): Observable<Apiresult> {
     return this.http.get<Apiresult>(this.apiConfig + "/api/auth/resetpassword?email=" + email);
   }
+  
+  getUsers(pageModel: Paging): Observable<Apiresult> {
+    return this.http.post<Apiresult>(this.apiConfig + "/api/auth/login", pageModel);
+  }
+
 }

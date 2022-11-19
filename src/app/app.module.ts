@@ -24,6 +24,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CustomInterceptorService } from 'src/services/custom-interceptor.service';
+import { IndexComponent } from './admin/category/index/index.component';
+import { CreateComponent } from './admin/product/create/create.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { CustomInterceptorService } from 'src/services/custom-interceptor.servic
     MenuComponent,
     FooterComponent,
     AuthPartialComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    IndexComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
