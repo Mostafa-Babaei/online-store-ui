@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ForgetPasswordComponent } from './account/forget-password/forget-password.component';
 import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
+import { AddCategoryComponent } from './admin/category/add-category/add-category.component';
+import { ListCategoryComponent } from './admin/category/list-category/list-category.component';
 import { AppComponent } from './app.component';
 import { NotfoundComponent } from './share/notfound/notfound.component';
 
@@ -11,9 +13,13 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "forget-password", component: ForgetPasswordComponent },
+
+  { path: "ListCategory", component:ListCategoryComponent  },
+  { path: "AddCategory", component:AddCategoryComponent  },
+
   { path: "404", component: NotfoundComponent },
-  // {path:"**",redirectTo:"404"},
   { path: "**", component: NotfoundComponent }
+
 ];
 
 @NgModule({

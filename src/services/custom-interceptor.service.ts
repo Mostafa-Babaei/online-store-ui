@@ -16,20 +16,15 @@ export class CustomInterceptorService implements HttpInterceptor {
 
   token = this.browserStorageService.getLocal("token");
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    this.loader.lodaingOn();
     const auth = req.clone({ headers: new HttpHeaders().set(`Authorization`, `Bearer ${this.token}`) });
     return next.handle(auth)
       .pipe(
         catchError(err => {
-          this.loader.lodaingOn();
-          console.log('loading on ...');
-          setTimeout(function () {
-            console.log('2');
-        }, 4000);
           this.showError(err);
           return throwError(err);
         }),
         finalize(() => {
-          console.log('loading off ...');
           this.loader.lodaingOff();
         })
       )

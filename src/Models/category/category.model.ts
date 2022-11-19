@@ -1,4 +1,4 @@
-export interface Category {
+export class Category {
     Id: number;
     CategoryName: string;
     CategoryPic: string;

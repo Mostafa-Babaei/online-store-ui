@@ -15,7 +15,10 @@ export class AuthPartialComponent implements OnInit {
     this.isLoggedUser = false;
   }
   logout() {
+    debugger;
+    console.log("logout");
     this.browserStorageService.removeLocal("token");
-    this.router.navigate(['/login'])
+    this.router.navigate(['/'])
+    window.location.reload;
   }
 }

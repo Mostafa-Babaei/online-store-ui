@@ -15,8 +15,7 @@ export class AccountService {
   constructor(private http: HttpClient, private browserStorageService: BrowserStorageService) { }
 
 
-  // apiConfig: string = GlobalConstants.apiURL;
-  apiConfig: string = "https://google.com";
+  apiConfig: string = GlobalConstants.apiURL;
 
   getAuthToken(): string {
     return this.browserStorageService.getLocal('token')

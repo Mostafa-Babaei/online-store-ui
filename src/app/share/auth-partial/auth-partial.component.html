@@ -1,16 +1,20 @@
 <!-- <div *ngIf="isLoggedUser" class="d-flex"> -->
-<div  class="d-flex">
+<div class="d-flex">
     <li>
         <a class="nav-link">
             <i class="bi bi-person-circle"></i>
             پنل کاربری
         </a>
     </li>
-    <li><a  (click)="logout()" class="nav-link"><i class="bi bi-x-circle-fill"></i>
-            خروج</a></li>
+    <li>
+        <a (click)="logout()" class="nav-link">
+            <i class="bi bi-x-circle-fill"></i>
+            خروج
+        </a>
+    </li>
 </div>
 <div class="d-flex" *ngIf="!isLoggedUser">
-    <li><a  routerLink="register" class="nav-link"><i class="bi bi-box-arrow-right"></i> Sign
+    <li><a routerLink="register" class="nav-link"><i class="bi bi-box-arrow-right"></i> Sign
             Up</a></li>
-    <li><a  routerLink="login" class="nav-link"><i class="bi bi-key"></i> Login</a></li>
+    <li><a routerLink="login" class="nav-link"><i class="bi bi-key"></i> Login</a></li>
 </div>
