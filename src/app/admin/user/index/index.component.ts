@@ -30,12 +30,9 @@ export class IndexComponent implements OnInit {
       } else {
         this.toastr.error(response.message);
       }
-    },
-      (error) => {
-        this.toastr.error("خطای پیش بینی نشده");
-      });
+    });
   }
 
-  
+
 
 }

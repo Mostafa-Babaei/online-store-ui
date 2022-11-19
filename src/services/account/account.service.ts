@@ -10,12 +10,13 @@ import { Paging } from 'src/Models/common/paging';
 @Injectable({
   providedIn: 'root'
 })
-export class AccountService  {
+export class AccountService {
 
   constructor(private http: HttpClient, private browserStorageService: BrowserStorageService) { }
 
 
-  apiConfig: string = GlobalConstants.apiURL;
+  // apiConfig: string = GlobalConstants.apiURL;
+  apiConfig: string = "https://google.com";
 
   getAuthToken(): string {
     return this.browserStorageService.getLocal('token')
@@ -28,7 +29,7 @@ export class AccountService  {
   resetPassword(email: string): Observable<Apiresult> {
     return this.http.get<Apiresult>(this.apiConfig + "/api/auth/resetpassword?email=" + email);
   }
-  
+
   getUsers(pageModel: Paging): Observable<Apiresult> {
     return this.http.post<Apiresult>(this.apiConfig + "/api/auth/login", pageModel);
   }

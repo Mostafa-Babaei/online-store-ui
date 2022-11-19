@@ -39,9 +39,6 @@ export class LoginComponent implements OnInit {
         } else {
           this.toastr.error(response.message);
         }
-      },
-      (error) => {
-        this.toastr.error("خطای پیش بینی نشده");
       });
   }
 
@@ -58,9 +55,6 @@ export class LoginComponent implements OnInit {
         } else {
           this.toastr.error(response.message);
         }
-      },
-      (error) => {
-        this.toastr.error("خطای پیش بینی نشده");
       });
   }
 
