@@ -10,25 +10,25 @@ import { GlobalConstants } from 'src/Models/common/global-constants';
 export class BrandService {
 
   constructor(private http: HttpClient) { }
-  
+
   apiConfig: string = GlobalConstants.apiURL;
 
   getAllBrand(): Observable<Apiresult> {
     return this.http.get<Apiresult>(this.apiConfig + "/api/brand/get");
   }
 
-  
-  addBrand(): Observable<Apiresult> {
-    return this.http.get<Apiresult>(this.apiConfig + "/api/brand/get");
+
+  addBrand(addBrand: any): Observable<Apiresult> {
+    return this.http.post<Apiresult>(this.apiConfig + "/api/brand/add", addBrand);
   }
 
-  
-  deleteBrand(): Observable<Apiresult> {
-    return this.http.get<Apiresult>(this.apiConfig + "/api/brand/delete");
+
+  deleteBrand(id: number): Observable<Apiresult> {
+    return this.http.delete<Apiresult>(this.apiConfig + "/api/brand/delete?id=" + id);
   }
 
-  
-  editBrand(): Observable<Apiresult> {
-    return this.http.get<Apiresult>(this.apiConfig + "/api/brand/edit");
+
+  editBrand(editBrand: any): Observable<Apiresult> {
+    return this.http.put<Apiresult>(this.apiConfig + "/api/brand/edit", editBrand);
   }
 }

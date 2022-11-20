@@ -1,0 +1,42 @@
+<a routerLink="/AddCategory" class="btn btn-info m-2">ثبت برند</a>
+
+<div class="col-md-10 p-2">
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">نام برند</th>
+                <th scope="col">وضعیت</th>
+                <th scope="col">عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listOfBrand;index as i">
+                <th scope="row">{{i+1}}</th>
+                <td>{{item.brandName}}</td>
+                <td>
+                    <i *ngClass="" class="bi bi-check text-success"></i>
+                    {{item.isActive}}
+                </td>
+                <td>
+                    <a routerLink="" class="btn btn-danger btn-xs">
+                        <i class="bi bi-edit"></i>
+                        ویرایش
+                    </a>
+                    <a (click)="removeBrand(item.id)" class="btn btn-danger btn-xs">
+                        <i class="bi bi-trash"></i>
+                        حذف
+                    </a>
+                </td>
+            </tr>
+            <tr *ngIf="!listOfBrand">
+                <td colspan="4">
+                    <div class="alert alert-danger text-center">
+                        <span>اطلاعات یافت نشد</span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
