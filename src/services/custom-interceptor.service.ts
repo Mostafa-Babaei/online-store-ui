@@ -50,7 +50,6 @@ export class CustomInterceptorService implements HttpInterceptor {
         this.toastr.error("خطای پیش بینی نشده ");
         break;
     }
-    this.toastr.warning(err.statusText);
 
   }
 }
