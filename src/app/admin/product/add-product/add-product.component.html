@@ -13,22 +13,19 @@
     
     <div class="from-group">
         <label class="form-label">دسته بندی</label>
-        <select class="form-control" name="" id="" [(ngModel)]="productDto.categoryId">
+        <select class="form-select" name="" id="" [(ngModel)]="productDto.categoryId">
             <option value="">دسته بندی را انتخاب کنید</option>
             <option value="{{cat.id}}" *ngFor="let cat of listOfCategory">{{cat.categoryName}}</option>
         </select>
     </div>
-{{productDto.categoryId}}
 
 <div class="from-group">
     <label class="form-label">برند</label>
-    <select class="form-control" name="" id="" [(ngModel)]="productDto.brandId">
+    <select class="form-select" name="" id="" [(ngModel)]="productDto.brandId">
         <option value="">برند را انتخاب کنید</option>
         <option value="{{item.id}}" *ngFor="let item of listOfBrand">{{item.brandName}}</option>
     </select>
 </div>
-{{productDto.brandId}}
-
 
     <fieldset class="form-group">
         <legend class="mt-4">وضعیت</legend>

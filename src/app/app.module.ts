@@ -31,6 +31,10 @@ import { AddCategoryComponent } from './admin/category/add-category/add-category
 import { ListProductComponent } from './admin/product/list-product/list-product.component';
 import { AddProductComponent } from './admin/product/add-product/add-product.component';
 import { ListUserComponent } from './admin/user/list-user/list-user.component';
+import { AdminLayoutComponent } from './_layout/admin-layout/admin-layout.component';
+import { MainLayoutComponent } from './_layout/main-layout/main-layout.component';
+import { AdminHeaderComponent } from './_layout/admin-header/admin-header.component';
+import { MainHeaderComponent } from './_layout/main-header/main-header.component';
 
 
 @NgModule({
@@ -53,7 +57,11 @@ import { ListUserComponent } from './admin/user/list-user/list-user.component';
     AddCategoryComponent,
     ListProductComponent,
     AddProductComponent,
-    ListUserComponent
+    ListUserComponent,
+    AdminLayoutComponent,
+    MainLayoutComponent,
+    AdminHeaderComponent,
+    MainHeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -30,7 +30,6 @@ export class AddProductComponent implements OnInit {
   }
 
   getAllBrand() {
-
     this.brandService.getAllBrand().subscribe((response) => {
       if (response.isSuccess) {
         this.listOfBrand = response.data as BrandDto[];
