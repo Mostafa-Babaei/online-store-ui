@@ -1,4 +1,4 @@
 export class AddBrandDto {
     brandName: string;
-    isEnable: boolean;
+    isActive: boolean;
 }

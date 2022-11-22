@@ -1,5 +1,4 @@
-<!-- <div *ngIf="isLoggedUser" class="d-flex"> -->
-<div class="d-flex">
+<div *ngIf="isLoggedUser==true" class="d-flex">
     <li>
         <a class="nav-link">
             <i class="bi bi-person-circle"></i>
@@ -13,8 +12,11 @@
         </a>
     </li>
 </div>
-<div class="d-flex" *ngIf="!isLoggedUser">
-    <li><a routerLink="register" class="nav-link"><i class="bi bi-box-arrow-right"></i> Sign
-            Up</a></li>
-    <li><a routerLink="login" class="nav-link"><i class="bi bi-key"></i> Login</a></li>
+<div class="d-flex" *ngIf="isLoggedUser==false">
+    <li>
+        <a routerLink="register" class="nav-link"><i class="bi bi-box-arrow-right"></i> SignUp</a>
+    </li>
+    <li>
+        <a routerLink="login" class="nav-link"><i class="bi bi-key"></i> Login</a>
+    </li>
 </div>

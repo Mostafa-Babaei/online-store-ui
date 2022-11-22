@@ -5,6 +5,7 @@ export class User {
      lastLogin?: Date;
      updateAt: Date;
      mobile: string;
+     email: string;
      avatar: string;
      nationalCode: string;
      isActive: boolean;

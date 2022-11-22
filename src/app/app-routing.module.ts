@@ -7,6 +7,9 @@ import { AddBrandComponent } from './admin/brand/add-brand/add-brand.component';
 import { ListBrandComponent } from './admin/brand/list-brand/list-brand.component';
 import { AddCategoryComponent } from './admin/category/add-category/add-category.component';
 import { ListCategoryComponent } from './admin/category/list-category/list-category.component';
+import { AddProductComponent } from './admin/product/add-product/add-product.component';
+import { ListProductComponent } from './admin/product/list-product/list-product.component';
+import { ListUserComponent } from './admin/user/list-user/list-user.component';
 import { AppComponent } from './app.component';
 import { NotfoundComponent } from './share/notfound/notfound.component';
 
@@ -21,6 +24,11 @@ const routes: Routes = [
 
   { path: "ListBrand", component: ListBrandComponent },
   { path: "AddBrand", component: AddBrandComponent },
+
+  { path: "ListProduct", component: ListProductComponent },
+  { path: "AddProduct", component: AddProductComponent },
+
+  { path: "ListUser", component: ListUserComponent },
 
   { path: "404", component: NotfoundComponent },
   { path: "**", component: NotfoundComponent }

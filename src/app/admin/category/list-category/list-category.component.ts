@@ -14,7 +14,7 @@ export class ListCategoryComponent implements OnInit {
   constructor(private categoryService: CategoryService, private router: Router,
     private toastr: ToastrService) { }
 
-  listOfCategory: any;
+  listOfCategory: Category[];
   ngOnInit(): void {
     this.getAllCategory()
   }
@@ -22,7 +22,7 @@ export class ListCategoryComponent implements OnInit {
     this.categoryService.getAllCategory().subscribe((Response) => {
       console.log(Response);
       if (Response.isSuccess) {
-        this.listOfCategory = Response.data;
+        this.listOfCategory = Response.data as Category[];
         console.log(this.listOfCategory);
       }
     })

@@ -1,1 +1,20 @@
-<p>add-brand works!</p>
+
+<div class="col-md-8  p-2 m-2">
+
+    <div class="form-group">
+        <label class="form-label">نام برند</label>
+        <input type="text" class="form-control" [(ngModel)]="addBrand.brandName" placeholder="نام برند">
+    </div>
+
+    <fieldset class="form-group">
+        <legend class="mt-4">وضعیت</legend>
+        <div class="form-check form-switch">
+            <input class="form-check-input" [(ngModel)]="addBrand.isActive" type="checkbox"
+                id="flexSwitchCheckChecked" checked="">
+            <label class="form-check-label" for="flexSwitchCheckChecked">برند فعال باشد </label>
+        </div>
+    </fieldset>
+
+    <a class="btn btn-success mt-4 text-center" (click)="addNewBrand()">ثبت برند</a>
+
+</div>

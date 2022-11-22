@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Apiresult } from 'src/Models/apiresult';
 import { BrowserStorageService } from 'src/services/share/browser-storage.service';
+import { AddCategoryDto } from 'src/Models/category/add-category-dto.model';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ import { BrowserStorageService } from 'src/services/share/browser-storage.servic
 export class LoginComponent implements OnInit {
   logginedUser: boolean = false;
   loginDto: Login;
+  addCategory:AddCategoryDto;
   constructor(private accountService: AccountService, private router: Router,
     private toastr: ToastrService, private browserStorageService: BrowserStorageService) {
 

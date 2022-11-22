@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { BrandDto } from 'src/Models/brand/brand-dto';
 import { BrandService } from 'src/services/brand/brand.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class ListBrandComponent implements OnInit {
   constructor(private brandService: BrandService, private router: Router,
     private toastr: ToastrService) { }
 
-  listOfBrand: any;
+  listOfBrand: BrandDto[];
   ngOnInit(): void {
     this.getAllBrand()
   }
@@ -20,7 +21,7 @@ export class ListBrandComponent implements OnInit {
     this.brandService.getAllBrand().subscribe((Response) => {
       console.log(Response);
       if (Response.isSuccess) {
-        this.listOfBrand = Response.data;
+        this.listOfBrand = Response.data as BrandDto[];
         console.log(this.listOfBrand);
       }
     })

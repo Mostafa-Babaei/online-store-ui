@@ -1,13 +1,12 @@
-export interface ProductDto {
-    ProductId: number;
-    Title: number;
-    Description: number;
-    PicPath: number;
-    IsActive: number;
-    Quntity: number;
-    Price: number;
-    CategoryId: number;
-    CategoryName: number;
-    BrandId: number;
-    BrandName: number;
+export class ProductDto {
+    productId: number;
+    title: string;
+    description: string;
+    isActive: boolean;
+    quntity: number;
+    price: number;
+    categoryId: number;
+    categoryName: string;
+    brandId: number;
+    brandName: string;
 }

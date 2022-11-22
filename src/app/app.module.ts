@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
@@ -14,7 +14,6 @@ import { CategoryService } from 'src/services/category/category.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { CreateComponent } from './admin/product/create/create.component';
 import { ListCategoryComponent } from './admin/category/list-category/list-category.component';
 import { EditComponent } from './admin/category/edit/edit.component';
 import { LoadingComponent } from './share/loading/loading.component';
@@ -28,6 +27,10 @@ import { ForgetPasswordComponent } from './account/forget-password/forget-passwo
 import { RegisterComponent } from './account/register/register.component';
 import { ListBrandComponent } from './admin/brand/list-brand/list-brand.component';
 import { AddBrandComponent } from './admin/brand/add-brand/add-brand.component';
+import { AddCategoryComponent } from './admin/category/add-category/add-category.component';
+import { ListProductComponent } from './admin/product/list-product/list-product.component';
+import { AddProductComponent } from './admin/product/add-product/add-product.component';
+import { ListUserComponent } from './admin/user/list-user/list-user.component';
 
 
 @NgModule({
@@ -43,11 +46,14 @@ import { AddBrandComponent } from './admin/brand/add-brand/add-brand.component';
     FooterComponent,
     AuthPartialComponent,
     NotfoundComponent,
-    CreateComponent,
     LoadingComponent,
     ListCategoryComponent,
     ListBrandComponent,
-    AddBrandComponent
+    AddBrandComponent,
+    AddCategoryComponent,
+    ListProductComponent,
+    AddProductComponent,
+    ListUserComponent
   ],
   imports: [
     BrowserModule,

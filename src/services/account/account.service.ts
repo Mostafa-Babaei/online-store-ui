@@ -21,6 +21,14 @@ export class AccountService {
     return this.browserStorageService.getLocal('token')
   }
 
+  isLogined(): boolean {
+    return this.browserStorageService.existKey('token');
+  }
+
+  RemoveToken() {
+    return this.browserStorageService.removeLocal('token')
+  }
+
   login(loginModel: Login): Observable<Apiresult> {
     return this.http.post<Apiresult>(this.apiConfig + "/api/auth/login", loginModel);
   }
@@ -29,8 +37,12 @@ export class AccountService {
     return this.http.get<Apiresult>(this.apiConfig + "/api/auth/resetpassword?email=" + email);
   }
 
-  getUsers(pageModel: Paging): Observable<Apiresult> {
-    return this.http.post<Apiresult>(this.apiConfig + "/api/auth/login", pageModel);
+  getUsers(): Observable<Apiresult> {
+    return this.http.get<Apiresult>(this.apiConfig + "/api/auth/GetAllUser");
+  }
+
+  changeStateOfUsers(userId: string): Observable<Apiresult> {
+    return this.http.put<Apiresult>(this.apiConfig + "/api/auth/ChangeState", userId);
   }
 
 }

@@ -49,4 +49,8 @@ export class BrowserStorageService {
       }
     }
   }
+  existKey(key: string): boolean {
+    return window.localStorage.hasOwnProperty(key);
+  }
+
 }

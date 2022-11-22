@@ -1,8 +1,10 @@
 import { HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
+import { AccountService } from './account/account.service';
 import { BrowserStorageService } from './share/browser-storage.service';
 import { LoadingService } from './share/loading.service';
 
@@ -12,7 +14,8 @@ import { LoadingService } from './share/loading.service';
 
 export class CustomInterceptorService implements HttpInterceptor {
   constructor(private browserStorageService: BrowserStorageService,
-    private toastr: ToastrService, private loader: LoadingService) { }
+    private toastr: ToastrService, private loader: LoadingService,
+    private accountService: AccountService, private router: Router) { }
 
   token = this.browserStorageService.getLocal("token");
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -38,6 +41,8 @@ export class CustomInterceptorService implements HttpInterceptor {
         this.toastr.error("آدرس مورد نظر یافت نشد ");
         break;
       case 401:
+        this.accountService.RemoveToken();
+        this.router.navigate(['/Login']);
         this.toastr.error("خطای احراز هویت ، لطفا وارد شوید");
         break;
       case 403:

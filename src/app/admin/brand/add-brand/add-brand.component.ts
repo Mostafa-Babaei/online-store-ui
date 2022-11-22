@@ -15,9 +15,11 @@ export class AddBrandComponent implements OnInit {
   constructor(private brandService: BrandService, private router: Router,
     private toastr: ToastrService) { }
   ngOnInit(): void {
+    this.addBrand = new AddBrandDto;
   }
 
   addNewBrand() {
+    console.log(this.addBrand);
     this.brandService.addBrand(this.addBrand).subscribe((response) => {
       console.log(response);
       if (response.isSuccess) {
@@ -28,5 +30,5 @@ export class AddBrandComponent implements OnInit {
       }
     });
   }
-
+  
 }

@@ -1,8 +1,8 @@
 export class Category {
-    Id: number;
-    CategoryName: string;
-    CategoryPic: string;
-    ParentId: number;
-    Order: number;
-    IsEnable: boolean;
+    id: number;
+    categoryName: string;
+    categoryPic: string;
+    parentId: number;
+    order: number;
+    isEnable: boolean;
 }
