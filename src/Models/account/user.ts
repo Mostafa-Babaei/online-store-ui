@@ -9,4 +9,5 @@ export class User {
      avatar: string;
      nationalCode: string;
      isActive: boolean;
+     role: string;
 }
