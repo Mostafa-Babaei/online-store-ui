@@ -53,12 +53,19 @@ export class AccountService {
     return this.http.get<Apiresult>(this.apiConfig + "/api/auth/GetAllRole");
   }
 
-  AddRole(role: any) {
+  AddRole(role: string) {
     return this.http.post<Apiresult>(this.apiConfig + "/api/auth/AddRole", role);
+  }
+
+  SetUserRole(role: string) {
+    return this.http.post<Apiresult>(this.apiConfig + "/api/auth/SetUserRole", role);
   }
 
   getUserRole(): Observable<Apiresult> {
     return this.http.get<Apiresult>(this.apiConfig + "/api/auth/GetUserRole");
   }
-  
+
+  changePassword(newPassword: string): Observable<Apiresult> {
+    return this.http.put<Apiresult>(this.apiConfig + "/api/auth/ChangePassword", newPassword);
+  }
 }
