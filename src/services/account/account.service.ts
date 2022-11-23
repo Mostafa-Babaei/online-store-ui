@@ -6,6 +6,7 @@ import { Apiresult } from 'src/Models/apiresult';
 import { Observable } from 'rxjs';
 import { BrowserStorageService } from '../share/browser-storage.service';
 import { Paging } from 'src/Models/common/paging';
+import { Register } from 'src/Models/account/register.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,11 @@ export class AccountService {
 
   login(loginModel: Login): Observable<Apiresult> {
     return this.http.post<Apiresult>(this.apiConfig + "/api/auth/login", loginModel);
+  }
+
+  register(registerModel: Register): Observable<Apiresult> {
+    console.log(registerModel);
+    return this.http.post<Apiresult>(this.apiConfig + "/api/auth/register", registerModel);
   }
 
   resetPassword(email: string): Observable<Apiresult> {

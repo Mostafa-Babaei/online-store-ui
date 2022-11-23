@@ -26,10 +26,25 @@ import { MainLayoutComponent } from './_layout/main-layout/main-layout.component
 const routes: Routes = [
 
 
+  //Home routes 
+  {
+    path: '',
+    component: MainLayoutComponent,
+    children: [
+      { path: "", component: HomeComponent, pathMatch: 'full' },
+      { path: "Home/:catId", component: HomeComponent },
+
+      { path: "login", component: LoginComponent },
+      { path: "register", component: RegisterComponent },
+      { path: "404", component: NotfoundComponent },
+      { path: "forget-password", component: ForgetPasswordComponent }
+
+    ]
+  },
 
   // Customer routes 
   {
-    path: '',
+    path: 'CustomerDashboard',
     component: CustomerLayoutComponent,
     children: [
       { path: "Profile", component: ProfileComponent },
@@ -65,21 +80,6 @@ const routes: Routes = [
     ]
   },
 
-  //Home routes 
-  {
-    path: '',
-    component: MainLayoutComponent,
-    children: [
-      { path: "", component: HomeComponent, pathMatch: 'full' },
-      { path: "Home/:catId", component: HomeComponent },
-
-      { path: "login", component: LoginComponent },
-      { path: "register", component: RegisterComponent },
-      { path: "404", component: NotfoundComponent },
-      { path: "forget-password", component: ForgetPasswordComponent }
-
-    ]
-  },
 
   { path: "**", redirectTo: '404' }
 

@@ -39,7 +39,7 @@
             <label for="floatingInput">نام کاربری</label>
         </div>
 
-        <div class="form-floating">
+        <div class="form-floating mt-2">
             <input type="password" [(ngModel)]="loginDto.password" class="form-control" id="floatingPassword"
                 placeholder="Password">
             <label for="floatingPassword">رمز عبور</label>
@@ -50,9 +50,13 @@
 
         <br />
         <div class="d-flex justify-content-center align-items-center mt-4">
-            <span class="btn btn-info m-2" type="button" routerLink="/register">ثبت نام</span>
-            <span class="btn btn-warning m-2" type="button" (click)="resetPassword()">بازنشانی رمز عبور</span>
+            <p>
+                کاربر جدید هستید ؟
+                <a class="btn btn-info btn-sm m-2" routerLink="/register">ثبت نام</a>
+            </p>
+            <!-- <span class="btn btn-warning m-2" type="button" (click)="resetPassword()">بازنشانی رمز عبور</span>
             <span class="btn btn-primary m-2" type="button" routerLink="/forget-password">فراموشی رمز عبور</span>
+        -->
         </div>
 
 

@@ -16,9 +16,21 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.registerDto = new Register;
+    this.registerDto.password="qqwsq";
+    this.registerDto.email="1";
   }
 
   registerUser() {
-    this.toastr.success("ثبت نام با موفقیت انجام شد");
+    console.log('register : ' + this.registerDto);
+    this.accountService.register(this.registerDto).subscribe((response) => {
+      console.log(response);
+      if (response.isSuccess) {
+        this.toastr.success(response.message);
+        this.router.navigate(['login']);
+      } else {
+        this.toastr.error(response.message);
+      }
+    });
   }
 }
