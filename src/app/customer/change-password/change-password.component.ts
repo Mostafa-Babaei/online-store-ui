@@ -16,6 +16,13 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   changePassword() {
-    this.toastr.success("رمز عبور تغییر یافت");
+    this.accountService.changePassword(this.newPassword).subscribe((response => {
+      if(response.isSuccess){
+        this.toastr.success(response.message);
+        this.router.navigate(['login']);
+      }else{
+        this.toastr.error(response.message);
+      }
+    }))
   }
 }

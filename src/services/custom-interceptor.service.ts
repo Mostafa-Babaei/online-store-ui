@@ -48,6 +48,9 @@ export class CustomInterceptorService implements HttpInterceptor {
       case 403:
         this.toastr.error("شما دارای مجوز برای این درخواست نمیباشد");
         break;
+      case 415:
+        this.toastr.error("مقادیر ارسالی معتبر نمی باشد");
+        break;
       case 0:
         this.toastr.error("خطای ارتباط با سرور ");
         break;

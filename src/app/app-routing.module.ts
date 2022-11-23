@@ -10,6 +10,7 @@ import { ListCategoryComponent } from './admin/category/list-category/list-categ
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { AddProductComponent } from './admin/product/add-product/add-product.component';
 import { ListProductComponent } from './admin/product/list-product/list-product.component';
+import { ListRoleComponent } from './admin/role/list-role/list-role.component';
 import { ListUserComponent } from './admin/user/list-user/list-user.component';
 import { AppComponent } from './app.component';
 import { ChangePasswordComponent } from './customer/change-password/change-password.component';
@@ -24,38 +25,6 @@ import { MainLayoutComponent } from './_layout/main-layout/main-layout.component
 
 const routes: Routes = [
 
-
-  // { path: "ListCategory", component: ListCategoryComponent },
-  // { path: "AddCategory", component: AddCategoryComponent },
-
-  // { path: "ListBrand", component: ListBrandComponent },
-  // { path: "AddBrand", component: AddBrandComponent },
-
-  // { path: "ListProduct", component: ListProductComponent },
-  // { path: "AddProduct", component: AddProductComponent },
-
-  // { path: "ListUser", component: ListUserComponent },
-
-  // { path: "Home", component: HomeComponent },
-
-  // { path: "404", component: NotfoundComponent },
-  // { path: "**", component: NotfoundComponent },
-
-
-  // Admin routes 
-  {
-    path: '',
-    component: MainLayoutComponent,
-    children: [
-      { path: "", component: HomeComponent, pathMatch: 'full' },
-      { path: "Home/:catId", component: HomeComponent },
-
-      { path: "login", component: LoginComponent },
-      { path: "register", component: RegisterComponent },
-      { path: "forget-password", component: ForgetPasswordComponent }
-
-    ]
-  },
 
 
   // Customer routes 
@@ -76,7 +45,7 @@ const routes: Routes = [
     component: AdminLayoutComponent,
     children: [
 
-      { path: "Dashboard", component:DashboardComponent },
+      { path: "Dashboard", component: DashboardComponent },
       { path: "ListCategory", component: ListCategoryComponent },
       { path: "AddCategory", component: AddCategoryComponent },
       { path: "Category/:id/Edit", component: AddCategoryComponent },
@@ -90,13 +59,29 @@ const routes: Routes = [
       { path: "AddProduct", component: AddProductComponent },
       { path: "Product/:id/Edit", component: AddCategoryComponent },
 
+      { path: "ListRole", component: ListRoleComponent },
       { path: "ListUser", component: ListUserComponent }
 
     ]
   },
-  
-  { path: "404", component: NotfoundComponent },
-  { path: "**", component: NotfoundComponent }
+
+  //Home routes 
+  {
+    path: '',
+    component: MainLayoutComponent,
+    children: [
+      { path: "", component: HomeComponent, pathMatch: 'full' },
+      { path: "Home/:catId", component: HomeComponent },
+
+      { path: "login", component: LoginComponent },
+      { path: "register", component: RegisterComponent },
+      { path: "404", component: NotfoundComponent },
+      { path: "forget-password", component: ForgetPasswordComponent }
+
+    ]
+  },
+
+  { path: "**", redirectTo: '404' }
 
 ];
 
