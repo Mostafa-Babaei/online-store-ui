@@ -10,6 +10,7 @@ import { ListCategoryComponent } from './admin/category/list-category/list-categ
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { AddProductComponent } from './admin/product/add-product/add-product.component';
 import { ListProductComponent } from './admin/product/list-product/list-product.component';
+import { ListRoleComponent } from './admin/role/list-role/list-role.component';
 import { ListUserComponent } from './admin/user/list-user/list-user.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -19,29 +20,8 @@ import { MainLayoutComponent } from './_layout/main-layout/main-layout.component
 
 const routes: Routes = [
 
-  // { path: "", component: HomeComponent },
-  // { path: "login", component: LoginComponent },
-  // { path: "register", component: RegisterComponent },
-  // { path: "forget-password", component: ForgetPasswordComponent },
 
-  // { path: "ListCategory", component: ListCategoryComponent },
-  // { path: "AddCategory", component: AddCategoryComponent },
-
-  // { path: "ListBrand", component: ListBrandComponent },
-  // { path: "AddBrand", component: AddBrandComponent },
-
-  // { path: "ListProduct", component: ListProductComponent },
-  // { path: "AddProduct", component: AddProductComponent },
-
-  // { path: "ListUser", component: ListUserComponent },
-
-  // { path: "Home", component: HomeComponent },
-
-  // { path: "404", component: NotfoundComponent },
-  // { path: "**", component: NotfoundComponent },
-
-
-  // Admin routes 
+  // Main routes 
   {
     path: '',
     component: MainLayoutComponent,
@@ -62,21 +42,23 @@ const routes: Routes = [
     component: AdminLayoutComponent,
     children: [
 
-      { path: "Dashboard", component:DashboardComponent },
+      { path: "Dashboard", component: DashboardComponent },
       { path: "ListCategory", component: ListCategoryComponent },
       { path: "AddCategory", component: AddCategoryComponent },
 
       { path: "ListBrand", component: ListBrandComponent },
       { path: "AddBrand", component: AddBrandComponent },
 
+
       { path: "ListProduct", component: ListProductComponent },
       { path: "AddProduct", component: AddProductComponent },
 
+      { path: "ListRole", component: ListRoleComponent },
       { path: "ListUser", component: ListUserComponent }
 
     ]
   },
-  
+
   { path: "404", component: NotfoundComponent },
   { path: "**", component: NotfoundComponent }
 

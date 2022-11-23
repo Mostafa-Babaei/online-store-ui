@@ -36,6 +36,8 @@ import { MainLayoutComponent } from './_layout/main-layout/main-layout.component
 import { AdminHeaderComponent } from './_layout/admin-header/admin-header.component';
 import { MainHeaderComponent } from './_layout/main-header/main-header.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { ChangePasswordComponent } from './account/change-password/change-password.component';
+import { ListRoleComponent } from './admin/role/list-role/list-role.component';
 
 
 @NgModule({
@@ -63,7 +65,9 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     MainLayoutComponent,
     AdminHeaderComponent,
     MainHeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    ChangePasswordComponent,
+    ListRoleComponent
   ],
   imports: [
     BrowserModule,

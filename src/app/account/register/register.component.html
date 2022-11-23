@@ -5,20 +5,20 @@
         <h1 class="h3 mb-3 fw-normal">ثبت نام کاربران</h1>
 
         <div class="form-floating">
-            <input type="email" ([ngModel])="registerDto.username"  class="form-control" id="floatingInput"
+            <input type="email" [(ngModel)]="registerDto.username"  class="form-control" id="floatingInput"
                 placeholder="name@example.com">
             <label for="floatingInput">نام کاربری</label>
         </div>
 
         <div class="form-floating">
-            <input type="password" ([ngModel])="registerDto.password" class="form-control" id="floatingPassword"
+            <input type="password" [(ngModel)]="registerDto.password" class="form-control" id="floatingPassword"
                 placeholder="Password">
             <label for="floatingPassword">رمز عبور</label>
         </div>
 
         
         <div class="form-floating">
-            <input type="password" ([ngModel])="registerDto.confirmPassword" class="form-control" id="floatingPassword"
+            <input type="password" [(ngModel)]="registerDto.confirmPassword" class="form-control" id="floatingPassword"
                 placeholder="Password">
             <label for="floatingPassword">تکرار رمز عبور</label>
         </div>
