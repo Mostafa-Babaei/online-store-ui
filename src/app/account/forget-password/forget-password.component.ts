@@ -12,13 +12,19 @@ export class ForgetPasswordComponent implements OnInit {
 
   constructor(private accountService: AccountService, private router: Router, private toastr: ToastrService) {
   }
-  
+
   email: string;
   ngOnInit(): void {
-    this.email="m@m.com"
+    this.email = "m@m.com"
   }
 
   sendNewPassword() {
+
+    if (!this.email) {
+      this.toastr.error("لطفا ایمیل خود را وارد نمائید");
+      return;
+    }
+
     this.accountService.resetPassword(this.email).subscribe((response) => {
       if (response.isSuccess) {
         this.toastr.success(response.message);

@@ -49,4 +49,16 @@ export class AccountService {
     this.browserStorageService.removeLocal("token");
   }
 
+  getAllRole() {
+    return this.http.get<Apiresult>(this.apiConfig + "/api/auth/GetAllRole");
+  }
+
+  AddRole(role: any) {
+    return this.http.post<Apiresult>(this.apiConfig + "/api/auth/AddRole", role);
+  }
+
+  getUserRole(): Observable<Apiresult> {
+    return this.http.get<Apiresult>(this.apiConfig + "/api/auth/GetUserRole");
+  }
+  
 }

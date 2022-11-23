@@ -36,6 +36,14 @@ import { MainLayoutComponent } from './_layout/main-layout/main-layout.component
 import { AdminHeaderComponent } from './_layout/admin-header/admin-header.component';
 import { MainHeaderComponent } from './_layout/main-header/main-header.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { CustomerLayoutComponent } from './_layout/customer-layout/customer-layout.component';
+import { CustomerHeaderComponent } from './_layout/customer-header/customer-header.component';
+import { ProfileComponent } from './customer/profile/profile.component';
+import { ChangePasswordComponent } from './customer/change-password/change-password.component';
+import { OrdersComponent } from './customer/orders/orders.component';
+import { LogoutComponent } from './account/logout/logout.component';
+import { ListOfRoleComponent } from './admin/user/list-of-role/list-of-role.component';
+import { AddRoleComponent } from './admin/user/add-role/add-role.component';
 
 
 @NgModule({
@@ -63,7 +71,15 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     MainLayoutComponent,
     AdminHeaderComponent,
     MainHeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    CustomerLayoutComponent,
+    CustomerHeaderComponent,
+    ProfileComponent,
+    ChangePasswordComponent,
+    OrdersComponent,
+    LogoutComponent,
+    ListOfRoleComponent,
+    AddRoleComponent
   ],
   imports: [
     BrowserModule,
