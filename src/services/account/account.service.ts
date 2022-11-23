@@ -45,4 +45,8 @@ export class AccountService {
     return this.http.put<Apiresult>(this.apiConfig + "/api/auth/ChangeState", userId);
   }
 
+  logout() {
+    this.browserStorageService.removeLocal("token");
+  }
+
 }

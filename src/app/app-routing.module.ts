@@ -7,6 +7,7 @@ import { AddBrandComponent } from './admin/brand/add-brand/add-brand.component';
 import { ListBrandComponent } from './admin/brand/list-brand/list-brand.component';
 import { AddCategoryComponent } from './admin/category/add-category/add-category.component';
 import { ListCategoryComponent } from './admin/category/list-category/list-category.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { AddProductComponent } from './admin/product/add-product/add-product.component';
 import { ListProductComponent } from './admin/product/list-product/list-product.component';
 import { ListUserComponent } from './admin/user/list-user/list-user.component';
@@ -46,12 +47,12 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: "", component: HomeComponent },
+      { path: "Home", component: HomeComponent },
 
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
-      { path: "forget-password", component: ForgetPasswordComponent },
+      { path: "forget-password", component: ForgetPasswordComponent }
 
-      { path: "Home", component: HomeComponent }
     ]
   },
 
@@ -61,6 +62,7 @@ const routes: Routes = [
     component: AdminLayoutComponent,
     children: [
 
+      { path: "Dashboard", component:DashboardComponent },
       { path: "ListCategory", component: ListCategoryComponent },
       { path: "AddCategory", component: AddCategoryComponent },
 

@@ -35,6 +35,7 @@ import { AdminLayoutComponent } from './_layout/admin-layout/admin-layout.compon
 import { MainLayoutComponent } from './_layout/main-layout/main-layout.component';
 import { AdminHeaderComponent } from './_layout/admin-header/admin-header.component';
 import { MainHeaderComponent } from './_layout/main-header/main-header.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { MainHeaderComponent } from './_layout/main-header/main-header.component
     AdminLayoutComponent,
     MainLayoutComponent,
     AdminHeaderComponent,
-    MainHeaderComponent
+    MainHeaderComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

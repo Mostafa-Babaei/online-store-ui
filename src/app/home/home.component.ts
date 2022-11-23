@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   finalListForShow: ProductDto[];
 
   ngOnInit(): void {
-    this.homeRequest=new HomeRequestDto;
+    this.homeRequest = new HomeRequestDto;
   }
 
   getAllBrand() {
@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getAllProduct() {
+  getProduct(catId?: number) {
     this.productServide.getAllProduct().subscribe((response) => {
       if (response.isSuccess) {
         this.listOfProduct = response.data as ProductDto[];
