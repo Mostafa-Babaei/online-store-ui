@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
 
   finalListForShow: ProductDto[];
   catId: number;
+  
   ngOnInit(): void {
     this.homeRequest = new HomeRequestDto;
     this.catId = this.activeRoute.root.snapshot.params['catId'];

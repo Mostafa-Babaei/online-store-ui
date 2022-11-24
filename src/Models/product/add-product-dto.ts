@@ -5,4 +5,5 @@ export class AddProductDto {
     price: number;
     categoryId: number;
     brandId: number;
+    productImage: File;
 }

@@ -32,6 +32,7 @@ export class CustomInterceptorService implements HttpInterceptor {
         })
       )
   }
+  
   showError(err: any) {
     switch (err.status) {
       case 500:

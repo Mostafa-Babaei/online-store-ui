@@ -17,6 +17,9 @@ export class AccountService {
 
 
   apiConfig: string = GlobalConstants.apiURL;
+  adminRole: string = GlobalConstants.AdminRole;
+  customerRole: string = GlobalConstants.CustomerRole;
+
 
   getAuthToken(): string {
     return this.browserStorageService.getLocal('token')
@@ -35,7 +38,6 @@ export class AccountService {
   }
 
   register(registerModel: Register): Observable<Apiresult> {
-    console.log(registerModel);
     return this.http.post<Apiresult>(this.apiConfig + "/api/auth/register", registerModel);
   }
 
@@ -73,5 +75,13 @@ export class AccountService {
 
   changePassword(newPassword: string): Observable<Apiresult> {
     return this.http.put<Apiresult>(this.apiConfig + "/api/auth/ChangeUserPassword", newPassword);
+  }
+
+  isAdmin(): Observable<boolean> {
+    return this.http.get<boolean>(this.apiConfig + "/api/auth/IsInRole?role=" + this.adminRole);
+  }
+
+  isCustomer(): Observable<boolean> {
+    return this.http.get<boolean>(this.apiConfig + "/api/auth/IsInRole?role=" + this.customerRole);
   }
 }

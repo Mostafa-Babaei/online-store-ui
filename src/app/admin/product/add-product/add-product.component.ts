@@ -18,8 +18,8 @@ export class AddProductComponent implements OnInit {
 
   constructor(private productServide: ProductService, private router: Router,
     private toastr: ToastrService, private categoryService: CategoryService, private brandService: BrandService) { }
-
-
+    imageSrc: string;
+  tempfile: File;
   productDto: AddProductDto;
   listOfBrand: BrandDto[];
   listOfCategory: Category[];
@@ -46,8 +46,22 @@ export class AddProductComponent implements OnInit {
       }
     });
   }
+  onchangeImage(event: any) {
+    console.log(event);
+    let fl = event.target.files[0];
+    
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageSrc = reader.result as string;
+    }
+    reader.readAsDataURL(fl);
 
+    console.log(fl);
+    console.log(fl.name);
+    console.log(fl.size);
+  }
   addProduct() {
+    debugger;
     this.productServide.addProduct(this.productDto).subscribe((response) => {
       if (response.isSuccess) {
         this.router.navigate(['ListProduct']);

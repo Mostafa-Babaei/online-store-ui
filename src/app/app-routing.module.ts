@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuardService } from 'src/services/guard/admin-guard.service';
+import { LoginGuardService } from 'src/services/guard/login-guard.service';
 import { ForgetPasswordComponent } from './account/forget-password/forget-password.component';
 import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
@@ -16,7 +18,10 @@ import { AppComponent } from './app.component';
 import { ChangePasswordComponent } from './customer/change-password/change-password.component';
 import { OrdersComponent } from './customer/orders/orders.component';
 import { ProfileComponent } from './customer/profile/profile.component';
+import { CartComponent } from './home/cart/cart.component';
 import { HomeComponent } from './home/home.component';
+import { InvoiceComponent } from './home/invoice/invoice.component';
+import { AccessDeniedComponent } from './share/accessDenied/access-denied/access-denied.component';
 import { NotfoundComponent } from './share/notfound/notfound.component';
 import { AdminLayoutComponent } from './_layout/admin-layout/admin-layout.component';
 import { CustomerHeaderComponent } from './_layout/customer-header/customer-header.component';
@@ -33,11 +38,11 @@ const routes: Routes = [
     children: [
       { path: "", component: HomeComponent, pathMatch: 'full' },
       { path: "Home/:catId", component: HomeComponent },
-
+      { path: "AccessDenied", component: AccessDeniedComponent },
       { path: "login", component: LoginComponent },
-      { path: "register", component: RegisterComponent },
+      { path: "register", component: RegisterComponent , canActivate: [AdminGuardService]},
       { path: "404", component: NotfoundComponent },
-      { path: "forget-password", component: ForgetPasswordComponent }
+      { path: "forget-password", component: ForgetPasswordComponent, canActivate: [AdminGuardService]  }
 
     ]
   },
@@ -46,10 +51,13 @@ const routes: Routes = [
   {
     path: 'CustomerDashboard',
     component: CustomerLayoutComponent,
+    // canActivateChild: [LoginGuardService],
     children: [
       { path: "Profile", component: ProfileComponent },
       { path: "OrdersOfCustomer", component: OrdersComponent },
       { path: "ChangePassword", component: ChangePasswordComponent },
+      { path: "Cart", component: CartComponent },
+      { path: "Invoice", component: InvoiceComponent }
     ]
   },
 
@@ -58,9 +66,11 @@ const routes: Routes = [
   {
     path: '',
     component: AdminLayoutComponent,
+    // canActivateChild: [AdminGuardService],
     children: [
 
       { path: "Dashboard", component: DashboardComponent },
+
       { path: "ListCategory", component: ListCategoryComponent },
       { path: "AddCategory", component: AddCategoryComponent },
       { path: "Category/:id/Edit", component: AddCategoryComponent },
@@ -79,7 +89,6 @@ const routes: Routes = [
 
     ]
   },
-
 
   { path: "**", redirectTo: '404' }
 

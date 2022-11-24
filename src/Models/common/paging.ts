@@ -1,7 +1,7 @@
 export class Paging {
     page:number;
-    count:number;
+    pageSize:number;
     totalPage:number;
     totalCount:number;
-
+    PageData: any;
 }

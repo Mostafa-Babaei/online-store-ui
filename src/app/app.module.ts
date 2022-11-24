@@ -41,6 +41,10 @@ import { ChangePasswordComponent } from './customer/change-password/change-passw
 import { CustomerLayoutComponent } from './_layout/customer-layout/customer-layout.component';
 import { CustomerHeaderComponent } from './_layout/customer-header/customer-header.component';
 import { ListRoleComponent } from './admin/role/list-role/list-role.component';
+import { AccessDeniedComponent } from './share/accessDenied/access-denied/access-denied.component';
+import { CartComponent } from './home/cart/cart.component';
+import { InvoiceComponent } from './home/invoice/invoice.component';
+import { OrderOfCustomerComponent } from './customer/order-of-customer/order-of-customer.component';
 
 
 @NgModule({
@@ -73,7 +77,11 @@ import { ListRoleComponent } from './admin/role/list-role/list-role.component';
     ChangePasswordComponent,
     CustomerLayoutComponent,
     CustomerHeaderComponent,
-    ListRoleComponent
+    ListRoleComponent,
+    AccessDeniedComponent,
+    CartComponent,
+    InvoiceComponent,
+    OrderOfCustomerComponent
   ],
   imports: [
     BrowserModule,
