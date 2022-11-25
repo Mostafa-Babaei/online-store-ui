@@ -6,16 +6,16 @@
   </div>
 </div>
 
-<div class="container col-md-12 p-4" *ngFor="let item of finalListForShow">
+<div class="container col-md-12 p-4" *ngFor="let item of listOfProduct">
   <div class="col-md-3">
     <div class="card" style="width: 18rem;">
       <img src="{{item.imageProduct}}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{item.title}}</h5>
         <p class="card-text">
-          {{item.description}}
+          {{item.price}} تومان
         </p>
-        <a href="#" class="btn btn-primary" (click)="addToCart()">افزودن به سبد خرید</a>
+        <a  class="btn btn-primary" (click)="addToCart(item)">افزودن به سبد خرید</a>
       </div>
     </div>
   </div>

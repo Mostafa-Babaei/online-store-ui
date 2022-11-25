@@ -1,6 +1,6 @@
 <div *ngIf="isLoggedUser==true" class="d-flex">
     <li>
-        <a class="nav-link" routerLink="Dashboard">
+        <a class="nav-link" (click)="goToPanel()">
             <i class="bi bi-person-circle"></i>
             پنل کاربری
         </a>

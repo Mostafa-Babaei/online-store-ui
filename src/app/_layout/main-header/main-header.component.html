@@ -2,9 +2,8 @@
     <div class="px-3 py-2 text-bg-dark">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-end ">
+
                 <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                    <!-- <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg> -->
-                    <!-- <i class="bi bi-shop"></i> -->
                     <img class="" src="/assets/Image/Logo32.png" alt="" width="32" height="32">
                     <span class="m-2">
                         فروشگاه آنلاین
@@ -12,6 +11,15 @@
                 </a>
 
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-lg-end my-md-0 text-small">
+                    
+                    
+                    <li class="float-left">
+                        <a routerLink="cart" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                            <i class="bi bi-cart4" style="font-size:24px"></i>
+                            <span class='badge badge-warning' id='lblCartCount'> 5 </span>
+                        </a>
+                    </li>
+
                     <li *ngFor="let item of menu">
                         <a href="/Home?catId={{item.id}}" class="nav-link text-white">{{item.categoryName}}</a>
                     </li>
@@ -42,7 +50,7 @@
                     </li> -->
 
                 </ul>
-                
+
             </div>
         </div>
     </div>

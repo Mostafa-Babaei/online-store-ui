@@ -45,6 +45,7 @@ import { AccessDeniedComponent } from './share/accessDenied/access-denied/access
 import { CartComponent } from './home/cart/cart.component';
 import { InvoiceComponent } from './home/invoice/invoice.component';
 import { OrderOfCustomerComponent } from './customer/order-of-customer/order-of-customer.component';
+import { ListOrderComponent } from './admin/order/list-order/list-order.component';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { OrderOfCustomerComponent } from './customer/order-of-customer/order-of-
     AccessDeniedComponent,
     CartComponent,
     InvoiceComponent,
-    OrderOfCustomerComponent
+    OrderOfCustomerComponent,
+    ListOrderComponent
   ],
   imports: [
     BrowserModule,

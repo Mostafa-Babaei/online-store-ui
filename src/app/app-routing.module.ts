@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuardService } from 'src/services/guard/admin-guard.service';
+import { CustomerGuardService } from 'src/services/guard/customer-guard.service';
 import { LoginGuardService } from 'src/services/guard/login-guard.service';
 import { ForgetPasswordComponent } from './account/forget-password/forget-password.component';
 import { LoginComponent } from './account/login/login.component';
@@ -10,6 +11,7 @@ import { ListBrandComponent } from './admin/brand/list-brand/list-brand.componen
 import { AddCategoryComponent } from './admin/category/add-category/add-category.component';
 import { ListCategoryComponent } from './admin/category/list-category/list-category.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { ListOrderComponent } from './admin/order/list-order/list-order.component';
 import { AddProductComponent } from './admin/product/add-product/add-product.component';
 import { ListProductComponent } from './admin/product/list-product/list-product.component';
 import { ListRoleComponent } from './admin/role/list-role/list-role.component';
@@ -37,26 +39,27 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: "", component: HomeComponent, pathMatch: 'full' },
+      // { path: "", component: HomeComponent},
       { path: "Home/:catId", component: HomeComponent },
       { path: "AccessDenied", component: AccessDeniedComponent },
       { path: "login", component: LoginComponent },
-      { path: "register", component: RegisterComponent , canActivate: [AdminGuardService]},
+      { path: "register", component: RegisterComponent },
       { path: "404", component: NotfoundComponent },
-      { path: "forget-password", component: ForgetPasswordComponent, canActivate: [AdminGuardService]  }
+      { path: "cart", component: CartComponent, canActivate: [LoginGuardService] },
+      { path: "forget-password", component: ForgetPasswordComponent }
 
     ]
   },
 
   // Customer routes 
   {
-    path: 'CustomerDashboard',
+    path: 'CustomerPanel',
     component: CustomerLayoutComponent,
-    // canActivateChild: [LoginGuardService],
+    canActivateChild: [LoginGuardService, CustomerGuardService],
     children: [
       { path: "Profile", component: ProfileComponent },
       { path: "OrdersOfCustomer", component: OrdersComponent },
       { path: "ChangePassword", component: ChangePasswordComponent },
-      { path: "Cart", component: CartComponent },
       { path: "Invoice", component: InvoiceComponent }
     ]
   },
@@ -64,9 +67,9 @@ const routes: Routes = [
 
   // Admin routes 
   {
-    path: '',
+    path: 'Admin',
     component: AdminLayoutComponent,
-    // canActivateChild: [AdminGuardService],
+    canActivateChild: [AdminGuardService],
     children: [
 
       { path: "Dashboard", component: DashboardComponent },
@@ -79,6 +82,7 @@ const routes: Routes = [
       { path: "AddBrand", component: AddBrandComponent },
       { path: "Brand/:id/Edit", component: AddCategoryComponent },
 
+      { path: "ListOrder", component: ListOrderComponent },
 
       { path: "ListProduct", component: ListProductComponent },
       { path: "AddProduct", component: AddProductComponent },
@@ -90,7 +94,8 @@ const routes: Routes = [
     ]
   },
 
-  { path: "**", redirectTo: '404' }
+  // { path: "**", redirectTo: '404' }
+  { path: "**", component: NotfoundComponent }
 
 ];
 

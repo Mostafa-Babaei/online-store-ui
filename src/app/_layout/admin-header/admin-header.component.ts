@@ -13,8 +13,8 @@ export class AdminHeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // logout() {
-  //   this.accountService.logout();
-  //   this.router.navigate(['Home']);
-  // }
+  logout() {
+    this.accountService.logout();
+    this.router.navigate(['/']);
+  }
 }

@@ -34,17 +34,8 @@ export class LoginComponent implements OnInit {
         if (response.isSuccess) {
           this.toastr.success(response.message);
           this.browserStorageService.setLocal("token", response.data);
-
-          if(this.accountService.isAdmin()){
-            this.router.navigate(['/Dashboard']);
-          }
-          
-          if(this.accountService.isCustomer()){
-            this.router.navigate(['/Profile']);
-          }
-
+          window.location.reload();
           this.router.navigate(['']);
-
         } else {
           this.toastr.error(response.message);
         }

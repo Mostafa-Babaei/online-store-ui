@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BrandDto } from 'src/Models/brand/brand-dto';
 import { Category } from 'src/Models/category/category.model';
+import { AddToCart } from 'src/Models/order/add-to-cart';
 import { ProductDto } from 'src/Models/product/product-dto';
 import { HomeRequestDto } from 'src/Models/Shop/home-request-dto';
 import { AccountService } from 'src/services/account/account.service';
@@ -28,15 +29,17 @@ export class HomeComponent implements OnInit {
 
   finalListForShow: ProductDto[];
   catId: number;
-  
+
   ngOnInit(): void {
     this.homeRequest = new HomeRequestDto;
     this.catId = this.activeRoute.root.snapshot.params['catId'];
-    this.toastr.success(this.catId.toString());
+    // this.toastr.success(this.catId.toString());
 
-    this.activeRoute.params.subscribe((params: Params) => {
-      this.catId = params['catId'];
-    });
+    // this.activeRoute.params.subscribe((params: Params) => {
+    //   this.catId = params['catId'];
+    // });
+    this.getProduct();
+    console.log(this.listOfProduct);
   }
 
   getAllBrand() {
@@ -61,13 +64,15 @@ export class HomeComponent implements OnInit {
     this.productServide.getAllProduct().subscribe((response) => {
       if (response.isSuccess) {
         this.listOfProduct = response.data as ProductDto[];
-        console.log(this.listOfCategory);
+        console.log(this.listOfProduct);
       }
     });
   }
 
-  addToCart() {
-
+  addToCart(item: ProductDto) {
+    console.log(item);
+    let addtoCart: AddToCart = { ProductId: item.productId, Count: 1 };
+   
     // بررسی ورود کاربر
     if (!this.accountService.isLogined()) {
       this.toastr.warning("قبل از ثبت سفارش وارد حساب کاربری خود شوید");
@@ -76,11 +81,11 @@ export class HomeComponent implements OnInit {
     }
 
     //ثبت در سبد خرید
-    this.cartService.addToCart().subscribe((response) => {
+    this.cartService.addToCart(addtoCart).subscribe((response) => {
       if (response.isSuccess) {
         this.toastr.success(response.message)
       } else {
-        this.toastr.success(response.message)
+        this.toastr.error(response.message)
       }
     })
 

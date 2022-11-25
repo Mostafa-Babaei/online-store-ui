@@ -1,4 +1,7 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { map } from 'rxjs';
+import { AccountService } from 'src/services/account/account.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +10,7 @@ import { Component, OnInit ,Input} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private accountService: AccountService) { }
   isLoggedUser!: Boolean;
 
   ngOnInit(): void {
