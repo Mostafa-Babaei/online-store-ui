@@ -11,15 +11,26 @@
                 </a>
 
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-lg-end my-md-0 text-small">
-                    
-                    
-                    <li class="float-left">
-                        <a routerLink="cart" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+
+
+                    <!-- <li class="float-left">
+                        <a routerLink="cart"
+                            class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
                             <i class="bi bi-cart4" style="font-size:24px"></i>
                             <span class='badge badge-warning' id='lblCartCount'> 5 </span>
                         </a>
-                    </li>
+                    </li> -->
 
+                    <li class="float-left">
+                        <a  routerLink="cart"
+                            class="btn btn-sm btn-outline-success d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                            
+                            <i class="bi bi-cart4" style="font-size:24px"></i>
+                            <!-- <span class='badge badge-warning' id='lblCartCount'> 5 </span> -->
+                            سبد خرید
+                        </a>
+                    </li>
+                    
                     <li *ngFor="let item of menu">
                         <a href="/Home?catId={{item.id}}" class="nav-link text-white">{{item.categoryName}}</a>
                     </li>

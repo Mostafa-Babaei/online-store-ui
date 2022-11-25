@@ -46,6 +46,7 @@ const routes: Routes = [
       { path: "register", component: RegisterComponent },
       { path: "404", component: NotfoundComponent },
       { path: "cart", component: CartComponent, canActivate: [LoginGuardService] },
+      { path: "invoice", component: InvoiceComponent, canActivate: [LoginGuardService] },
       { path: "forget-password", component: ForgetPasswordComponent }
 
     ]

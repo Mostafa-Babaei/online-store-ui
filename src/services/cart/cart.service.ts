@@ -19,24 +19,26 @@ export class CartService {
     return this.http.post<Apiresult>(this.apiConfig + "/api/ShoppingCart/AddToCart", item);
   }
 
-  removeItemFromCart(): Observable<Apiresult> {
-    return this.http.get<Apiresult>(this.apiConfig + "/api/ShoppingCart/removeItem");
+  removeItemFromCart(productId: number): Observable<Apiresult> {
+    return this.http.delete<Apiresult>(this.apiConfig + "/api/ShoppingCart/RemoveItemFromCart?productId=" + productId);
   }
 
   removeAllItemFromCart(): Observable<Apiresult> {
     return this.http.get<Apiresult>(this.apiConfig + "/api/ShoppingCart/removeAll");
   }
 
-  changeNumberOfItem(): Observable<Apiresult> {
-    return this.http.get<Apiresult>(this.apiConfig + "/api/ShoppingCart/changeNumbrOfItem");
+  changeNumberOfItem(productId: number, count: number): Observable<Apiresult> {
+    return this.http.put<Apiresult>(this.apiConfig + "/api/ShoppingCart/ChangeNumberOfCartItem?productId=" + productId + "&newCount=" + count, null);
   }
 
   addCartToOrder(): Observable<Apiresult> {
-    return this.http.get<Apiresult>(this.apiConfig + "/api/ShoppingCart/AddToOrder");
+    return this.http.post<Apiresult>(this.apiConfig + "/api/ShoppingCart/AddOrderFromCart",null);
   }
-  
-  getCartItems(){
+
+  getCartItems() {
     return this.http.get<Apiresult>(this.apiConfig + "/api/ShoppingCart/GetCartItems");
   }
+
+
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartDto } from 'src/Models/cart/cart-dto';
 import { CartService } from 'src/services/cart/cart.service';
@@ -10,7 +11,7 @@ import { CartService } from 'src/services/cart/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private cartService: CartService, private toastr: ToastrService) { }
+  constructor(private cartService: CartService, private toastr: ToastrService, private router: Router) { }
   cartItems: CartDto[];
   totalInvoice: number = 0;
   ngOnInit(): void {
@@ -22,15 +23,37 @@ export class CartComponent implements OnInit {
   }
 
   submitOrder() {
-    this.toastr.warning("سفارش شما ثبت شد");
+    this.cartService.addCartToOrder().subscribe((response) => {
+      if (response.isSuccess) {
+        this.toastr.success(response.message);
+        this.router.navigate(['/invoice']);
+      } else {
+        this.toastr.error(response.message);
+      }
+    });
   }
 
   changeNumberOfItem(item: CartDto) {
-    this.toastr.warning(item.count.toString());
+    this.cartService.changeNumberOfItem(item.productId, item.count).subscribe((response) => {
+      if (response.isSuccess) {
+        this.toastr.success(response.message);
+        this.getCartInfo()
+      } else {
+        this.toastr.error(response.message);
+      }
+    });
   }
 
-  remodeItem(item: CartDto) {
-    this.toastr.warning(item.title + "حذف شد");
+  removeItem(index: number) {
+    console.log(this.cartItems[index].title);
+    this.cartService.removeItemFromCart(this.cartItems[index].productId).subscribe((response) => {
+      if (response.isSuccess) {
+        this.cartItems.splice(index, 1);
+        this.toastr.warning(response.message);
+      } else {
+        this.toastr.warning(response.message);
+      }
+    });
   }
 
   getCartInfo() {
