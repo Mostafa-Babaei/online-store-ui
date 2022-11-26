@@ -14,10 +14,11 @@ export class OrderService {
   apiConfig: string = GlobalConstants.apiURL;
 
   getCustomerOrder(page?: number, pageSize?: number): Observable<Apiresult> {
-    return this.http.get<Apiresult>(this.apiConfig + "/api/order/GetOrdersOfUser?email=");
+    return this.http.get<Apiresult>(this.apiConfig + "/api/order/GetOrdersOfUser?page=" + page);
   }
 
   getOrder(orderNumber: string): Observable<Apiresult> {
     return this.http.get<Apiresult>(this.apiConfig + "/api/order/GetOrder?orderNumber=" + orderNumber);
   }
+
 }

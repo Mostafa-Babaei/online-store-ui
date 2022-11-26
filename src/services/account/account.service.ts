@@ -84,4 +84,8 @@ export class AccountService {
   isCustomer(): Observable<boolean> {
     return this.http.get<boolean>(this.apiConfig + "/api/auth/IsInRole?role=" + this.customerRole);
   }
+
+  getUser(): Observable<Apiresult> {
+    return this.http.get<Apiresult>(this.apiConfig + "/api/auth/GetCurrentUser");
+  }
 }

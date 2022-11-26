@@ -56,7 +56,7 @@ const routes: Routes = [
   {
     path: 'CustomerPanel',
     component: CustomerLayoutComponent,
-    canActivateChild: [LoginGuardService, CustomerGuardService],
+    // canActivateChild: [LoginGuardService, CustomerGuardService],
     children: [
       { path: "Profile", component: ProfileComponent },
       { path: "OrdersOfCustomer", component: OrdersComponent },

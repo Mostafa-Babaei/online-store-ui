@@ -1,1 +1,59 @@
-<p>list-order works!</p>
+<div
+    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom  alert alert-info mt-2">
+    <h5 class="text-center">سفارشات </h5>
+    <!-- <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group me-2">
+        <button type="button" class="btn btn-sm btn-outline-secondary">1</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary">2</button>
+    </div>
+    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+        <span data-feather="calendar" class="align-text-bottom"></span>
+        3 
+    </button>
+</div> -->
+</div>
+
+<main class="form-signin m-auto text-center">
+    <div>
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <td>#</td>
+                    <td>تاریخ</td>
+                    <td>شناسه سفارش</td>
+                    <td>تعداد کالا</td>
+                    <td>مبلغ</td>
+                    <td>عملیات</td>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr *ngFor="let item of dataModel.orders;let i=index;"> -->
+                <tr>
+                    <td></td>
+                    <td>{{dataModel.page-1}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        {{dataModel.totalPage}}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a (click)="goNextPage()" class="page-link">قبلی</a>
+                </li>
+
+                <li class="page-item" *ngFor="let item of counter(dataModel.totalPage);let i=index;">
+                    <a class="page-link" (click)="getorders(i)">{{i}}</a>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link" (click)="goNextPage()" href="#">بعدی</a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+</main>

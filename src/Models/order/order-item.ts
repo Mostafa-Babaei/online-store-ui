@@ -1,11 +1,11 @@
 import { ProductDto } from "../product/product-dto";
 
 export interface OrderItem {
-    Id: number;
-    Quantity: number;
-    BasePrice: number;
-    TotalPrice: number;
-    ProductId: number;
-    Product: ProductDto;
-    OrderId: number;
+    id: number;
+    quantity: number;
+    basePrice: number;
+    totalPrice: number;
+    productId: number;
+    product: ProductDto;
+    orderId: number;
 }

@@ -22,10 +22,12 @@ export class OrdersComponent implements OnInit {
   constructor(private orderService: OrderService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.getOrders(this.page);
+    this.dataModel = new Paging;
+    this.dataModel.totalPage = 6;
+    this.getorders(this.page);
   }
 
-  getOrders(pageNum: number) {
+  getorders(pageNum: number) {
     this.orderService.getCustomerOrder(pageNum).subscribe((response) => {
       if (response.isSuccess) {
         this.dataModel = response.data as Paging;
@@ -35,9 +37,13 @@ export class OrdersComponent implements OnInit {
       }
     });
   }
+  goNextPage() {
 
-  changePage(newPage: number) {
-    this.getOrders(newPage);
   }
-  
+  changePage(newPage: number) {
+    this.getorders(newPage);
+  }
+  counter(i: number) {
+    return new Array(i);
+  }
 }
