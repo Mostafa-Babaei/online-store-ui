@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
   loginUser() {
     this.accountService.login(this.loginDto).subscribe(
       (response) => {
-        console.log(response);
         if (response.isSuccess) {
           this.toastr.success(response.message);
           this.browserStorageService.setLocal("token", response.data);

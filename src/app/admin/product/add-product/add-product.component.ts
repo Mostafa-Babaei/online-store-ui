@@ -18,7 +18,7 @@ export class AddProductComponent implements OnInit {
 
   constructor(private productServide: ProductService, private router: Router,
     private toastr: ToastrService, private categoryService: CategoryService, private brandService: BrandService) { }
-    imageSrc: string;
+  imageSrc: string;
   tempfile: File;
   productDto: AddProductDto;
   listOfBrand: BrandDto[];
@@ -49,16 +49,13 @@ export class AddProductComponent implements OnInit {
   onchangeImage(event: any) {
     console.log(event);
     let fl = event.target.files[0];
-    
+
     const reader = new FileReader();
     reader.onload = () => {
       this.imageSrc = reader.result as string;
     }
     reader.readAsDataURL(fl);
-
-    console.log(fl);
-    console.log(fl.name);
-    console.log(fl.size);
+    this.productDto.productImage = fl;
   }
   addProduct() {
     debugger;

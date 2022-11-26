@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { BrowserStorageService } from '../share/browser-storage.service';
 import { Paging } from 'src/Models/common/paging';
 import { Register } from 'src/Models/account/register.model';
+import { User } from 'src/Models/account/user';
 
 @Injectable({
   providedIn: 'root'
@@ -74,7 +75,8 @@ export class AccountService {
   }
 
   changePassword(newPassword: string): Observable<Apiresult> {
-    return this.http.put<Apiresult>(this.apiConfig + "/api/auth/ChangeUserPassword", newPassword);
+    debugger;
+    return this.http.put<Apiresult>(this.apiConfig + "/api/auth/ChangeUserPassword?newPassword=" + newPassword, null);
   }
 
   isAdmin(): Observable<boolean> {
@@ -88,4 +90,16 @@ export class AccountService {
   getUser(): Observable<Apiresult> {
     return this.http.get<Apiresult>(this.apiConfig + "/api/auth/GetCurrentUser");
   }
+
+  updateUser(user: User) {
+    return this.http.put<Apiresult>(this.apiConfig + "/api/auth/UpdateUser", user);
+  }
+
+
+  setAvatarUser(avatar: File) {
+    let formData: FormData = new FormData();
+    formData.append('avatar', avatar, avatar.name);
+    return this.http.post<Apiresult>(this.apiConfig + "/api/auth/AddAvatar", formData);
+  }
+
 }

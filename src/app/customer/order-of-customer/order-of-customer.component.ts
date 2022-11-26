@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Paging } from 'src/Models/common/paging';
-import { PagingModel } from 'src/Models/common/paging-model';
 import { OrderDto } from 'src/Models/order/order-dto';
 import { OrderService } from 'src/services/order/order.service';
 
@@ -26,8 +25,10 @@ export class OrderOfCustomerComponent implements OnInit {
   getOrders(pageNum: number) {
     this.orderService.getCustomerOrder(pageNum).subscribe((response) => {
       if (response.isSuccess) {
+        debugger;
         this.dataModel = response.data as Paging;
-        this.orders = this.dataModel.PageData as OrderDto[];
+        this.orders = this.dataModel.pageData as OrderDto[];
+        console.log(this.orders);
       } else {
         this.toastr.error(response.message);
       }
@@ -37,7 +38,7 @@ export class OrderOfCustomerComponent implements OnInit {
   goNextPage() {
 
   }
-  
+
   changePage(newPage: number) {
     this.getOrders(newPage);
   }

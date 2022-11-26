@@ -16,6 +16,7 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   changePassword() {
+    debugger;
     this.accountService.changePassword(this.newPassword).subscribe((response => {
       if(response.isSuccess){
         this.toastr.success(response.message);

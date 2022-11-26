@@ -47,6 +47,7 @@ import { InvoiceComponent } from './home/invoice/invoice.component';
 import { OrderOfCustomerComponent } from './customer/order-of-customer/order-of-customer.component';
 import { ListOrderComponent } from './admin/order/list-order/list-order.component';
 import { PaymentComponent } from './home/payment/payment.component';
+import { ProfileComponent } from './customer/profile/profile.component';
 
 
 @NgModule({
@@ -82,8 +83,9 @@ import { PaymentComponent } from './home/payment/payment.component';
     ListRoleComponent,
     AccessDeniedComponent,
     CartComponent,
-    // InvoiceComponent,
-    // OrderOfCustomerComponent,
+    InvoiceComponent,
+    OrderOfCustomerComponent,
+    ProfileComponent,
     ListOrderComponent,
     PaymentComponent
   ],

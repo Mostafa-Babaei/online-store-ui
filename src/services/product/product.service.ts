@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Apiresult } from 'src/Models/apiresult';
@@ -19,8 +19,20 @@ export class ProductService {
   }
 
 
-  addProduct(addModel: AddProductDto): Observable<Apiresult> {
-    return this.http.post<Apiresult>(this.apiConfig + "/api/Product/addProduct", addModel);
+  addProduct(addModel: any): Observable<Apiresult> {
+    const HttpUploadOptions = {
+      headers: new HttpHeaders({ "Content-Type": "multipart/form-data" })
+    }
+    const formData = new FormData();
+    formData.append("productImage", addModel.productImage);
+    formData.append("categoryId", addModel.categoryId);
+    formData.append("brandId", addModel.brandId);
+    formData.append("price", addModel.price);
+    formData.append("isActive", addModel.isActive);
+    formData.append("title", addModel.title);
+    formData.append("description", addModel.description);
+
+    return this.http.post<Apiresult>(this.apiConfig + "/api/Product/addProduct", formData, HttpUploadOptions);
   }
 
 

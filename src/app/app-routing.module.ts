@@ -18,7 +18,7 @@ import { ListRoleComponent } from './admin/role/list-role/list-role.component';
 import { ListUserComponent } from './admin/user/list-user/list-user.component';
 import { AppComponent } from './app.component';
 import { ChangePasswordComponent } from './customer/change-password/change-password.component';
-import { OrdersComponent } from './customer/orders/orders.component';
+import { OrderOfCustomerComponent } from './customer/order-of-customer/order-of-customer.component';
 import { ProfileComponent } from './customer/profile/profile.component';
 import { CartComponent } from './home/cart/cart.component';
 import { HomeComponent } from './home/home.component';
@@ -56,10 +56,10 @@ const routes: Routes = [
   {
     path: 'CustomerPanel',
     component: CustomerLayoutComponent,
-    // canActivateChild: [LoginGuardService, CustomerGuardService],
+    //  canActivateChild: [LoginGuardService, CustomerGuardService],
     children: [
       { path: "Profile", component: ProfileComponent },
-      { path: "OrdersOfCustomer", component: OrdersComponent },
+      { path: "OrdersOfCustomer", component: OrderOfCustomerComponent },
       { path: "ChangePassword", component: ChangePasswordComponent },
       { path: "Invoice", component: InvoiceComponent }
     ]
