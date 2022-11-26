@@ -22,8 +22,8 @@ export class OrdersComponent implements OnInit {
   constructor(private orderService: OrderService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.dataModel = new Paging;
-    this.dataModel.totalPage = 6;
+    // this.dataModel = new Paging;
+    // this.dataModel.totalPage = 6;
     this.getorders(this.page);
   }
 
