@@ -25,7 +25,7 @@ export class ListOrderComponent implements OnInit {
   }
 
   getorders(pageNum: number) {
-    this.orderService.getCustomerOrder(pageNum).subscribe((response) => {
+    this.orderService.getAllOrder(pageNum).subscribe((response) => {
       if (response.isSuccess) {
         this.dataModel = response.data as Paging;
         this.orders = this.dataModel.pageData as OrderDto[];

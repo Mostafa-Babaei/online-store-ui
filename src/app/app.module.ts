@@ -50,6 +50,7 @@ import { PaymentComponent } from './home/payment/payment.component';
 import { ProfileComponent } from './customer/profile/profile.component';
 import { CartHeaderComponent } from './share/cart/cart-header/cart-header.component';
 import { AddNewUserComponent } from './admin/user/add-new-user/add-new-user.component';
+import { ChangeOrderStateComponent } from './admin/order/change-order-state/change-order-state.component';
 
 
 @NgModule({
@@ -91,7 +92,8 @@ import { AddNewUserComponent } from './admin/user/add-new-user/add-new-user.comp
     ListOrderComponent,
     PaymentComponent,
     CartHeaderComponent,
-    AddNewUserComponent
+    AddNewUserComponent,
+    ChangeOrderStateComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,11 @@ export class OrderService {
   constructor(private http: HttpClient, private browserStorageService: BrowserStorageService) { }
   apiConfig: string = GlobalConstants.apiURL;
 
+
+  getAllOrder(page?: number, pageSize?: number): Observable<Apiresult> {
+    return this.http.get<Apiresult>(this.apiConfig + "/api/order/GetOrders?page=" + page);
+  }
+
   getCustomerOrder(page?: number, pageSize?: number): Observable<Apiresult> {
     return this.http.get<Apiresult>(this.apiConfig + "/api/order/GetOrdersOfUser?page=" + page);
   }
