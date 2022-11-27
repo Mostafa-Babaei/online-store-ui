@@ -16,9 +16,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.registerDto = new Register;
-    this.registerDto.password="qqwsq";
-    this.registerDto.email="1";
   }
 
   registerUser() {

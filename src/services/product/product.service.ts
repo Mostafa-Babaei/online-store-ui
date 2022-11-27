@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Apiresult } from 'src/Models/apiresult';
 import { GlobalConstants } from 'src/Models/common/global-constants';
 import { AddProductDto } from 'src/Models/product/add-product-dto';
+import { HomeRequestDto } from 'src/Models/Shop/home-request-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,13 @@ export class ProductService {
     return this.http.get<Apiresult>(this.apiConfig + "/api/Product/getAll");
   }
 
+  getAllProductByCategory(categoryId: number): Observable<Apiresult> {
+    return this.http.get<Apiresult>(this.apiConfig + "/api/Product/getAll");
+  }
+
+  getAllProductByFilter(homeRequest: HomeRequestDto): Observable<Apiresult> {
+    return this.http.post<Apiresult>(this.apiConfig + "/api/Product/GetProductsByFilter", homeRequest);
+  }
 
   addProduct(addModel: any): Observable<Apiresult> {
     const HttpUploadOptions = {
@@ -43,7 +51,6 @@ export class ProductService {
   changeStateProduct(id: number): Observable<Apiresult> {
     return this.http.put<Apiresult>(this.apiConfig + "/api/Product/ChangeStateOfProduct", id);
   }
-
 
   editProduct(): Observable<Apiresult> {
     return this.http.get<Apiresult>(this.apiConfig + "/api/Product/editProduct");

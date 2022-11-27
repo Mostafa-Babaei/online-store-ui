@@ -15,6 +15,7 @@ import { ListOrderComponent } from './admin/order/list-order/list-order.componen
 import { AddProductComponent } from './admin/product/add-product/add-product.component';
 import { ListProductComponent } from './admin/product/list-product/list-product.component';
 import { ListRoleComponent } from './admin/role/list-role/list-role.component';
+import { AddNewUserComponent } from './admin/user/add-new-user/add-new-user.component';
 import { ListUserComponent } from './admin/user/list-user/list-user.component';
 import { AppComponent } from './app.component';
 import { ChangePasswordComponent } from './customer/change-password/change-password.component';
@@ -90,6 +91,7 @@ const routes: Routes = [
       { path: "Product/:id/Edit", component: AddCategoryComponent },
 
       { path: "ListRole", component: ListRoleComponent },
+      { path: "AddUser", component: AddNewUserComponent },
       { path: "ListUser", component: ListUserComponent }
 
     ]

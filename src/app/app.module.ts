@@ -49,6 +49,7 @@ import { ListOrderComponent } from './admin/order/list-order/list-order.componen
 import { PaymentComponent } from './home/payment/payment.component';
 import { ProfileComponent } from './customer/profile/profile.component';
 import { CartHeaderComponent } from './share/cart/cart-header/cart-header.component';
+import { AddNewUserComponent } from './admin/user/add-new-user/add-new-user.component';
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import { CartHeaderComponent } from './share/cart/cart-header/cart-header.compon
     ProfileComponent,
     ListOrderComponent,
     PaymentComponent,
-    CartHeaderComponent
+    CartHeaderComponent,
+    AddNewUserComponent
   ],
   imports: [
     BrowserModule,

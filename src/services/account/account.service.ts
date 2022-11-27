@@ -102,4 +102,8 @@ export class AccountService {
     return this.http.post<Apiresult>(this.apiConfig + "/api/auth/AddAvatar", formData);
   }
 
+  addNewUser(user:Register): Observable<Apiresult> {
+    return this.http.post<Apiresult>(this.apiConfig + "/api/auth/AddNewUser",user);
+  }
+
 }

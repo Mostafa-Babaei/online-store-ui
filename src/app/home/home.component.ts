@@ -27,35 +27,50 @@ export class HomeComponent implements OnInit {
   listOfBrand: BrandDto[];
   listOfCategory: Category[];
 
-  finalListForShow: ProductDto[];
+  // finalListForShow: ProductDto[];
   catId: number;
-
+  brandId: number;
+  searchText: string;
   ngOnInit(): void {
+
     this.homeRequest = new HomeRequestDto;
+
     this.catId = this.activeRoute.root.snapshot.params['catId'];
+    if (!this.catId) {
+      this.homeRequest.categoryFilter = this.catId;
+    }
+
+    this.brandId = this.activeRoute.root.snapshot.params['brandId'];
+    if (!this.brandId) {
+      this.homeRequest.brandFilter = this.brandId;
+    }
+
+    this.searchText = this.activeRoute.root.snapshot.params['searchText'];
+    if (!this.searchText) {
+      this.homeRequest.searchText = this.searchText;
+    }
+
     // this.toastr.success(this.catId.toString());
 
-    // this.activeRoute.params.subscribe((params: Params) => {
-    //   this.catId = params['catId'];
-    // });
-    this.getProduct();
+    this.getProductByFilter();
   }
 
-  getAllBrand() {
-    this.brandService.getAllBrand().subscribe((response) => {
-      if (response.isSuccess) {
-        this.listOfBrand = response.data as BrandDto[];
-      }
-    });
-  }
+  // getAllBrand() {
+  //   this.brandService.getAllBrand().subscribe((response) => {
+  //     if (response.isSuccess) {
+  //       this.listOfBrand = response.data as BrandDto[];
+  //     }
+  //   });
+  // }
 
-  getAllCategory() {
-    this.categoryService.getAllCategory().subscribe((response) => {
-      if (response.isSuccess) {
-        this.listOfCategory = response.data as Category[];
-      }
-    });
-  }
+  // getAllCategory() {
+  //   this.categoryService.getAllCategory().subscribe((response) => {
+  //     if (response.isSuccess) {
+  //       this.listOfCategory = response.data as Category[];
+  //     }
+  //   });
+  // }
+
 
   getProduct(catId?: number) {
     this.productServide.getAllProduct().subscribe((response) => {
@@ -65,9 +80,19 @@ export class HomeComponent implements OnInit {
     });
   }
 
+
+  getProductByFilter(homeRequest?: HomeRequestDto) {
+    this.productServide.getAllProductByFilter(this.homeRequest).subscribe((response) => {
+      if (response.isSuccess) {
+        this.listOfProduct = response.data as ProductDto[];
+      }
+    });
+  }
+
+
   addToCart(item: ProductDto) {
     let addtoCart: AddToCart = { ProductId: item.productId, Count: 1 };
-   
+
     // بررسی ورود کاربر
     if (!this.accountService.isLogined()) {
       this.toastr.warning("قبل از ثبت سفارش وارد حساب کاربری خود شوید");

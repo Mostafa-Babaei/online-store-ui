@@ -34,7 +34,7 @@
                         <app-cart-header></app-cart-header>
                     </li>
                     <li *ngFor="let item of menu">
-                        <a href="/Home?catId={{item.id}}" class="nav-link text-white">{{item.categoryName}}</a>
+                        <a routerLink="/Home" [queryParams]="{catId: '{{item.id}}'}"  class="nav-link text-white">{{item.categoryName}}</a>
                     </li>
                     <!--                     
                     <li>

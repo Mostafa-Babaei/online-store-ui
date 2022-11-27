@@ -1,4 +1,5 @@
-export class Register {
+export interface Register {
+    fullname: string;
     email: string;
     password: string;
 }
