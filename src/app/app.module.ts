@@ -48,6 +48,7 @@ import { OrderOfCustomerComponent } from './customer/order-of-customer/order-of-
 import { ListOrderComponent } from './admin/order/list-order/list-order.component';
 import { PaymentComponent } from './home/payment/payment.component';
 import { ProfileComponent } from './customer/profile/profile.component';
+import { CartHeaderComponent } from './share/cart/cart-header/cart-header.component';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { ProfileComponent } from './customer/profile/profile.component';
     OrderOfCustomerComponent,
     ProfileComponent,
     ListOrderComponent,
-    PaymentComponent
+    PaymentComponent,
+    CartHeaderComponent
   ],
   imports: [
     BrowserModule,

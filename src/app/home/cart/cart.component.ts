@@ -42,6 +42,8 @@ export class CartComponent implements OnInit {
         this.toastr.error(response.message);
       }
     });
+    
+    this.cartService.getNumberOfItem();
   }
 
   removeItem(index: number) {
@@ -54,6 +56,8 @@ export class CartComponent implements OnInit {
         this.toastr.warning(response.message);
       }
     });
+    
+    this.cartService.getNumberOfItem();
   }
 
   getCartInfo() {
@@ -69,5 +73,7 @@ export class CartComponent implements OnInit {
         this.toastr.warning(response.message);
       }
     });
+    
+    this.cartService.getNumberOfItem();
   }
 }

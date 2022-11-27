@@ -39,14 +39,12 @@ export class HomeComponent implements OnInit {
     //   this.catId = params['catId'];
     // });
     this.getProduct();
-    console.log(this.listOfProduct);
   }
 
   getAllBrand() {
     this.brandService.getAllBrand().subscribe((response) => {
       if (response.isSuccess) {
         this.listOfBrand = response.data as BrandDto[];
-        console.log(this.listOfBrand);
       }
     });
   }
@@ -55,7 +53,6 @@ export class HomeComponent implements OnInit {
     this.categoryService.getAllCategory().subscribe((response) => {
       if (response.isSuccess) {
         this.listOfCategory = response.data as Category[];
-        console.log(this.listOfCategory);
       }
     });
   }
@@ -64,13 +61,11 @@ export class HomeComponent implements OnInit {
     this.productServide.getAllProduct().subscribe((response) => {
       if (response.isSuccess) {
         this.listOfProduct = response.data as ProductDto[];
-        console.log(this.listOfProduct);
       }
     });
   }
 
   addToCart(item: ProductDto) {
-    console.log(item);
     let addtoCart: AddToCart = { ProductId: item.productId, Count: 1 };
    
     // بررسی ورود کاربر
@@ -88,7 +83,7 @@ export class HomeComponent implements OnInit {
         this.toastr.error(response.message)
       }
     })
-
+    this.cartService.getNumberOfItem();
   }
 
 }
