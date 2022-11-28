@@ -33,8 +33,9 @@ export class LoginComponent implements OnInit {
         if (response.isSuccess) {
           this.toastr.success(response.message);
           this.browserStorageService.setLocal("token", response.data);
-          window.location.reload();
-          this.router.navigate(['']);
+          // window.location.reload();
+          this.router.navigate(['/']);
+          return;
         } else {
           this.toastr.error(response.message);
         }

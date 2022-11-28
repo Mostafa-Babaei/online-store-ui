@@ -10,7 +10,7 @@ import { CategoryService } from 'src/services/category/category.service';
 })
 export class MainHeaderComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService,private router:Route) {
+  constructor(private categoryService: CategoryService) {
     
     
    }

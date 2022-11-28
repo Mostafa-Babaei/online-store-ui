@@ -12,30 +12,37 @@ import { OrderService } from 'src/services/order/order.service';
 export class InvoiceComponent implements OnInit {
 
   orderNumber: string = "";
-  constructor( private activeRoute: ActivatedRoute,
+  constructor(private activeRoute: ActivatedRoute,
     private toastr: ToastrService, private orderService: OrderService) { }
-
-  orderDto: OrderDto;
+  loadComplate: boolean;
+  orderDto!: OrderDto;
   ngOnInit(): void {
-    this.orderNumber = this.activeRoute.snapshot.queryParamMap.get('orderNumber') ?? "".toString();
-    this.toastr.info(this.orderNumber);
-    this.getorder();
+    this.loadComplate = false;
+    this.activeRoute.queryParams.subscribe((queryPrams) => {
+      this.orderNumber = queryPrams['orderNumber'];
+      this.getorder();
+    })
   }
 
   getorder() {
+
     if (!this.orderNumber || this.orderNumber == "") {
       this.toastr.warning("سفارش یافت نشد");
+      this.loadComplate = true;
       return;
     }
 
     this.orderService.getOrder(this.orderNumber).subscribe((result) => {
       if (result.isSuccess) {
         this.orderDto = result.data as OrderDto;
+        this.loadComplate = true;
+        console.log(this.orderDto);
       } else {
         this.toastr.error(result.message);
+        this.loadComplate = true;
       }
     });
   }
-  
+
 }
 

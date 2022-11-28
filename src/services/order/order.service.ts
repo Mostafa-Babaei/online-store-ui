@@ -25,5 +25,8 @@ export class OrderService {
   getOrder(orderNumber: string): Observable<Apiresult> {
     return this.http.get<Apiresult>(this.apiConfig + "/api/order/GetOrder?orderNumber=" + orderNumber);
   }
-
+  
+  paymentOrder(orderNumber:string){
+    return this.http.get<Apiresult>(this.apiConfig + "/api/order/PaymentOrder?orderNumber=" + orderNumber);
+  }
 }

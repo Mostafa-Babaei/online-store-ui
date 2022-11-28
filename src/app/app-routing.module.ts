@@ -26,11 +26,11 @@ import { ProfileComponent } from './customer/profile/profile.component';
 import { CartComponent } from './home/cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { InvoiceComponent } from './home/invoice/invoice.component';
+import { PaymentComponent } from './home/payment/payment.component';
 import { ProductDetailsComponent } from './home/product-details/product-details.component';
 import { AccessDeniedComponent } from './share/accessDenied/access-denied/access-denied.component';
 import { NotfoundComponent } from './share/notfound/notfound.component';
 import { AdminLayoutComponent } from './_layout/admin-layout/admin-layout.component';
-import { CustomerHeaderComponent } from './_layout/customer-header/customer-header.component';
 import { CustomerLayoutComponent } from './_layout/customer-layout/customer-layout.component';
 import { MainLayoutComponent } from './_layout/main-layout/main-layout.component';
 
@@ -49,6 +49,7 @@ const routes: Routes = [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
       { path: "404", component: NotfoundComponent },
+      { path: "paymentOrder", component: PaymentComponent},
       { path: "productDetails/:id", component: ProductDetailsComponent },
       { path: "cart", component: CartComponent, canActivate: [LoginGuardService] },
       { path: "invoice", component: InvoiceComponent, canActivate: [LoginGuardService] },

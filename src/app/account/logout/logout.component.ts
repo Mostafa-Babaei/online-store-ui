@@ -15,6 +15,7 @@ export class LogoutComponent implements OnInit {
   }
   logout() {
     this.accountService.logout();
-    this.router.navigate(['Home']);
+    // window.location.reload();
+    this.router.navigate(['/']);
   }
 }

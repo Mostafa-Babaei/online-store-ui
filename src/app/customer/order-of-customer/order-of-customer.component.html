@@ -46,30 +46,15 @@
                     </td>
                     <td>{{item.price | number:'3.0'}}</td>
                     <td>
-                        <a class="text-info">
+                        <a class="text-info" routerLink="/invoice" [queryParams]="{orderNumber: item.orderNumber}">
                             <i class="bi bi-receipt"></i>
-                            فاکتور</a>
+                            فاکتور
+                        </a>
                     </td>
                 </tr>
             </tbody>
         </table>
 
-        <!-- <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item ">
-                    <a (click)="goNextPage()" [ngClass]="{'disabled':dataModel.page === 1}" class="page-link">قبلی</a>
-                </li>
-
-                <li class="page-item" *ngIf="dataModel.totalPage===1" *ngFor="let item of dataModel.totalPage;let i=index;">
-                    <a class="page-link" (click)="getOrders(i)">{{i}}</a>
-                </li>
-
-                <li class="page-item">
-                    <a class="page-link" [ngClass]="{'disabled':dataModel.page === dataModel.totalPage}"
-                        (click)="goNextPage()" href="#">بعدی</a>
-                </li>
-            </ul>
-        </nav> -->
 
     </div>
 </main>

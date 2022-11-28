@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
+import { User } from 'src/Models/account/user';
+import { GlobalConstants } from 'src/Models/common/global-constants';
 import { AccountService } from 'src/services/account/account.service';
 import { BrowserStorageService } from 'src/services/share/browser-storage.service';
 
@@ -10,9 +12,14 @@ import { BrowserStorageService } from 'src/services/share/browser-storage.servic
   styleUrls: ['./auth-partial.component.css']
 })
 export class AuthPartialComponent implements OnInit {
-  constructor(private browserStorageService: BrowserStorageService, private router: Router, private accountService: AccountService) { }
+  constructor(private browserStorageService: BrowserStorageService, private router: Router, public accountService: AccountService) { }
+
   isLoggedUser: boolean = false;
   panelRoot: string;
+
+  adminRole: string = GlobalConstants.AdminRole;
+  customerRole: string = GlobalConstants.CustomerRole;
+
   ngOnInit(): void {
     this.isLoggedUser = this.accountService.isLogined();
   }
@@ -23,35 +30,28 @@ export class AuthPartialComponent implements OnInit {
     window.location.reload;
   }
 
-
+  user: User;
   goToPanel() {
     debugger;
-    // check Admin
-    this.accountService.isAdmin().pipe(
-      map(account => {
-        console.log("admin check :" +account);
-        if (account == true) {
+    this.accountService.getUser().subscribe((response) => {
+      if (response.isSuccess) {
+        this.user = response.data as User;
+        
+        let role = this.user.role.filter(x => x.selected == true)[0];
+        if (role && role.text == this.adminRole) {
           this.router.navigate(['/Admin/Dashboard']);
           return;
         }
-      })
-    );
+        if (role && role.text == this.customerRole) {
+          this.router.navigate(['/CustomerPanel/Profile']);
+          return;
+        }
+        this.router.navigate(['/']);
 
-
-    // check Customer
-    let isCustomerRole: boolean = false;
-    this.accountService.isCustomer().pipe(
-      map(account => {
-        console.log("customer check :" + account);
-        isCustomerRole = account;
-      })
-    );
-
-    if (isCustomerRole) {
-      this.router.navigate(['/CustomerPanel/Profile']);
-      return;
-    }
-
+      } else {
+        this.router.navigate(['/']);
+      }
+    });
   }
 
 }
