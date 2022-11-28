@@ -2,7 +2,8 @@
     class=" d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
     <i class="bi bi-cart4 fa-lg"></i>
     <span class="badge rounded-pill badge-notification bg-danger">
-        {{numberOfCart}}
+        <!-- {{numberOfCart}} -->
+        {{this.cartService.readNumberOfItem()}}
     </span>
 </a>
 <!-- 

@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private productServide: ProductService, private router: Router, private accountService: AccountService, private activeRoute: ActivatedRoute,
     private toastr: ToastrService, private categoryService: CategoryService, private brandService: BrandService, private cartService: CartService) { }
-
+  defualtImageProduct: string;
   homeRequest: HomeRequestDto;
   listOfProduct: ProductDto[];
   listOfBrand: BrandDto[];
@@ -32,27 +32,51 @@ export class HomeComponent implements OnInit {
   brandId: number;
   searchText: string;
   ngOnInit(): void {
-
+    this.defualtImageProduct = 'https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp';
     this.homeRequest = new HomeRequestDto;
+    this.homeRequest.categoryFilter = 0;
+    this.homeRequest.brandFilter = 0;
+    this.homeRequest.searchText = "";
 
-    this.catId = this.activeRoute.root.snapshot.params['catId'];
-    if (!this.catId) {
-      this.homeRequest.categoryFilter = this.catId;
-    }
 
-    this.brandId = this.activeRoute.root.snapshot.params['brandId'];
-    if (!this.brandId) {
-      this.homeRequest.brandFilter = this.brandId;
-    }
+    // this.catId = +(this.activeRoute.snapshot.queryParamMap.get('catId') ?? 0);
+    // if (this.catId && this.catId > 0) {
+    //   this.homeRequest.categoryFilter = this.catId;
+    // }
 
-    this.searchText = this.activeRoute.root.snapshot.params['searchText'];
-    if (!this.searchText) {
-      this.homeRequest.searchText = this.searchText;
-    }
+    // this.brandId = +(this.activeRoute.snapshot.queryParamMap.get('brandId') ?? 0);
+    // if (this.brandId) {
+    //   this.homeRequest.brandFilter = this.brandId;
+    // }
 
+    // this.searchText = this.activeRoute.snapshot.queryParamMap.get('searchText') ?? '';
+    // if (this.searchText) {
+    //   this.homeRequest.searchText = this.searchText;
+    // }
+    console.log("catId : " + this.catId + " brandId : " + this.brandId + " searchText : " + this.searchText);
+    this.activeRoute.queryParams.subscribe((queryPrams) => {
+      this.homeRequest.categoryFilter = queryPrams['catId'] ?? 0;
+      this.homeRequest.brandFilter = queryPrams['brandId'] ?? 0;
+      this.homeRequest.searchText = queryPrams['searchText'];
+      if (queryPrams['catId']) {
+      }
+      if (queryPrams['brandId']) {
+      }
+      if (queryPrams['searchText']) {
+      }
+      this.getProductByFilter();
+    })
     // this.toastr.success(this.catId.toString());
 
-    this.getProductByFilter();
+    //this.getProduct();
+  }
+
+  getParams() {
+    this.activeRoute.queryParams.subscribe((queryPrams) => {
+      debugger;
+
+      console.log("queryParams : " + queryPrams);
+    })
   }
 
   // getAllBrand() {
@@ -83,11 +107,14 @@ export class HomeComponent implements OnInit {
 
   getProductByFilter(homeRequest?: HomeRequestDto) {
     this.productServide.getAllProductByFilter(this.homeRequest).subscribe((response) => {
+      debugger;
       if (response.isSuccess) {
-        this.listOfProduct = response.data as ProductDto[];
+        let temp: HomeRequestDto = response.data as HomeRequestDto;
+        this.listOfProduct = temp.products;
       }
     });
   }
+
 
 
   addToCart(item: ProductDto) {
@@ -103,12 +130,12 @@ export class HomeComponent implements OnInit {
     //ثبت در سبد خرید
     this.cartService.addToCart(addtoCart).subscribe((response) => {
       if (response.isSuccess) {
+        this.cartService.getNumberOfItem();
         this.toastr.success(response.message)
       } else {
         this.toastr.error(response.message)
       }
     })
-    this.cartService.getNumberOfItem();
   }
 
 }

@@ -15,6 +15,7 @@ export class AddNewUserComponent implements OnInit {
   constructor(private accountService: AccountService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.registerModel=new Register;
   }
 
   addUser() {

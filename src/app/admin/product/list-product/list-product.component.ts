@@ -42,7 +42,6 @@ export class ListProductComponent implements OnInit {
   changeStateProduct(id:number){
     this.productServide.changeStateProduct(id).subscribe((response) => {
       if (response.isSuccess) {
-        this.listOfProduct = response.data as ProductDto[];
         this.getAllProduct();
       } else {
         this.toastr.error(response.message);

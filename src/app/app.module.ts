@@ -51,6 +51,9 @@ import { ProfileComponent } from './customer/profile/profile.component';
 import { CartHeaderComponent } from './share/cart/cart-header/cart-header.component';
 import { AddNewUserComponent } from './admin/user/add-new-user/add-new-user.component';
 import { ChangeOrderStateComponent } from './admin/order/change-order-state/change-order-state.component';
+import { AddImageProductComponent } from './admin/product/add-image-product/add-image-product.component';
+import { ProductDetailsComponent } from './home/product-details/product-details.component';
+import { EditUserComponent } from './admin/user/edit-user/edit-user.component';
 
 
 @NgModule({
@@ -93,7 +96,10 @@ import { ChangeOrderStateComponent } from './admin/order/change-order-state/chan
     PaymentComponent,
     CartHeaderComponent,
     AddNewUserComponent,
-    ChangeOrderStateComponent
+    ChangeOrderStateComponent,
+    AddImageProductComponent,
+    ProductDetailsComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

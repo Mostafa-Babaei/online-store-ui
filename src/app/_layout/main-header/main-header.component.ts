@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route } from '@angular/router';
 import { Category } from 'src/Models/category/category.model';
 import { CategoryService } from 'src/services/category/category.service';
 
@@ -9,9 +10,14 @@ import { CategoryService } from 'src/services/category/category.service';
 })
 export class MainHeaderComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService,private router:Route) {
+    
+    
+   }
   menu: Category[];
+  searchText:string;
   ngOnInit(): void {
+    this.searchText="";
     this.getMneu();
   }
   getMneu() {

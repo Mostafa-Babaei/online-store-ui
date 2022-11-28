@@ -9,7 +9,7 @@ import { CartService } from 'src/services/cart/cart.service';
 export class CartHeaderComponent implements OnInit {
 
   numberOfCart: number;
-  constructor(private cartService: CartService) { }
+  constructor(public cartService: CartService) { }
 
   ngOnInit(): void {
     this.numberOfCart = this.cartService.readNumberOfItem();

@@ -29,26 +29,28 @@ export class AuthPartialComponent implements OnInit {
     // check Admin
     this.accountService.isAdmin().pipe(
       map(account => {
+        console.log("admin check :" +account);
         if (account == true) {
           this.router.navigate(['/Admin/Dashboard']);
           return;
         }
       })
     );
-    
+
 
     // check Customer
     let isCustomerRole: boolean = false;
     this.accountService.isCustomer().pipe(
       map(account => {
+        console.log("customer check :" + account);
         isCustomerRole = account;
       })
     );
+
     if (isCustomerRole) {
-      this.router.navigate(['/CustomerPanel/Dashboard']);
+      this.router.navigate(['/CustomerPanel/Profile']);
       return;
     }
-
 
   }
 

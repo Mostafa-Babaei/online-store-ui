@@ -34,6 +34,7 @@ export class ListUserComponent implements OnInit {
     this.accountService.changeStateOfUsers(id).subscribe((response) => {
       if (response.isSuccess) {
         this.getAllUser();
+        this.toastr.success(response.message);
       } else {
         this.toastr.error(response.message);
       }

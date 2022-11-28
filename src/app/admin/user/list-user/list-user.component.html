@@ -4,7 +4,7 @@ class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-cente
 <h5 class="text-center">لیست کاربران </h5>
 <div class="btn-toolbar mb-2 mb-md-0">
 <div class="btn-group me-2">
-    <button type="button" routerLink="Admin/AddUser" class="btn btn-sm btn-outline-secondary">ثبت کاربر جدید</button>
+    <a type="button" href="/Admin/AddUser" class="btn btn-sm btn-secondary">ثبت کاربر جدید</a>
     <!-- <button type="button" class="btn btn-sm btn-outline-secondary">2</button> -->
 </div>
 <!-- <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
@@ -35,12 +35,12 @@ class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-cente
                     {{item.isActive}}
                 </td>
                 <td>
-                    <a routerLink="">
+                    <a routerLink="/Admin/EditUser/{{item.id}}" class="btn btn-info btn-sm mx-1">
                         <i class="bi bi-edit"></i>
                         ویرایش
                     </a>
 
-                    <a (click)="changeStateUser(item.userId)" class="btn btn-warning btn-sm">
+                    <a (click)="changeStateUser(item.id)" class="btn btn-warning btn-sm mx-1">
                         <i class="bi bi-eye"></i>
                         تغییر وضعیت
                     </a>

@@ -33,7 +33,6 @@ export class AddProductComponent implements OnInit {
     this.brandService.getAllBrand().subscribe((response) => {
       if (response.isSuccess) {
         this.listOfBrand = response.data as BrandDto[];
-        console.log(this.listOfBrand);
       }
     });
   }
@@ -42,26 +41,27 @@ export class AddProductComponent implements OnInit {
     this.categoryService.getAllCategory().subscribe((response) => {
       if (response.isSuccess) {
         this.listOfCategory = response.data as Category[];
-        console.log(this.listOfCategory);
       }
     });
   }
-  onchangeImage(event: any) {
-    console.log(event);
-    let fl = event.target.files[0];
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imageSrc = reader.result as string;
-    }
-    reader.readAsDataURL(fl);
-    this.productDto.productImage = fl;
-  }
+  // onchangeImage(event: any) {
+  //   console.log(event);
+  //   let fl = event.target.files[0];
+
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     this.imageSrc = reader.result as string;
+  //   }
+  //   reader.readAsDataURL(fl);
+  //   this.productDto.productImage = fl;
+  // }
+
   addProduct() {
     debugger;
     this.productServide.addProduct(this.productDto).subscribe((response) => {
       if (response.isSuccess) {
-        this.router.navigate(['ListProduct']);
+        this.router.navigate(['َ/Admin/ListProduct']);
         this.toastr.success(response.message);
       } else {
         this.toastr.error(response.message);

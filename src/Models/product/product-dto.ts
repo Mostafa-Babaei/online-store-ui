@@ -10,4 +10,5 @@ export class ProductDto {
     categoryName: string;
     brandId: number;
     brandName: string;
+    picPath: string;
 }

@@ -51,7 +51,7 @@ export class AccountService {
   }
 
   changeStateOfUsers(userId: string): Observable<Apiresult> {
-    return this.http.put<Apiresult>(this.apiConfig + "/api/auth/ChangeState", userId);
+    return this.http.put<Apiresult>(this.apiConfig + "/api/auth/ChangeState?userId=" + userId, null);
   }
 
   logout() {
@@ -91,8 +91,17 @@ export class AccountService {
     return this.http.get<Apiresult>(this.apiConfig + "/api/auth/GetCurrentUser");
   }
 
+
+  getUserById(id: string): Observable<Apiresult> {
+    return this.http.get<Apiresult>(this.apiConfig + "/api/auth/GetCurrentUserById?userId=" + id);
+  }
+
   updateUser(user: User) {
     return this.http.put<Apiresult>(this.apiConfig + "/api/auth/UpdateUser", user);
+  }
+
+  updateUserById(user: User) {
+    return this.http.put<Apiresult>(this.apiConfig + "/api/auth/UpdateUserById", user);
   }
 
 
@@ -102,8 +111,8 @@ export class AccountService {
     return this.http.post<Apiresult>(this.apiConfig + "/api/auth/AddAvatar", formData);
   }
 
-  addNewUser(user:Register): Observable<Apiresult> {
-    return this.http.post<Apiresult>(this.apiConfig + "/api/auth/AddNewUser",user);
+  addNewUser(user: Register): Observable<Apiresult> {
+    return this.http.post<Apiresult>(this.apiConfig + "/api/auth/AddNewUser", user);
   }
 
 }

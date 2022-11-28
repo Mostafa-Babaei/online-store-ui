@@ -1,0 +1,27 @@
+<div
+    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom  alert alert-info mt-2">
+    <h5 class="text-center">افزودن تصویر محصول </h5>
+    <div class="btn-toolbar mb-2 mb-md-0">
+
+    </div>
+</div>
+<div class="container mt-2">
+
+    <div class="form-outline">
+        <label for="formFileMultiple" class="form-label" >تصویر محصول</label>
+        <input class="form-control" type="file" id="formFileMultiple" (change)="onchangeImage($event)" />
+    </div>
+
+    <div class="form-outline mt-3">
+        <img [src]="imageSrc" width="200px" class="img-thumbnail"
+            alt="Hollywood Sign on The Hill" />
+    </div>
+    <div class="form-outline mt-3">
+        <a (click)="uploadImage()" class="btn btn-success btn-sm">
+            <i class="bi bi-cloud-upload"></i>
+            بارگذاری
+        </a>
+    </div>
+
+
+</div>

@@ -25,6 +25,7 @@ export class CartComponent implements OnInit {
   submitOrder() {
     this.cartService.addCartToOrder().subscribe((response) => {
       if (response.isSuccess) {
+        this.cartService.setNumberOfItem(0);
         this.toastr.success(response.message);
         this.router.navigate(['/invoice']);
       } else {
@@ -36,34 +37,35 @@ export class CartComponent implements OnInit {
   changeNumberOfItem(item: CartDto) {
     this.cartService.changeNumberOfItem(item.productId, item.count).subscribe((response) => {
       if (response.isSuccess) {
+        this.cartService.getNumberOfItem();
         this.toastr.success(response.message);
         this.getCartInfo()
       } else {
         this.toastr.error(response.message);
       }
     });
-    
-    this.cartService.getNumberOfItem();
+
   }
 
   removeItem(index: number) {
     console.log(this.cartItems[index].title);
     this.cartService.removeItemFromCart(this.cartItems[index].productId).subscribe((response) => {
       if (response.isSuccess) {
+        this.cartService.getNumberOfItem();
         this.cartItems.splice(index, 1);
         this.toastr.warning(response.message);
       } else {
         this.toastr.warning(response.message);
       }
     });
-    
-    this.cartService.getNumberOfItem();
+
   }
 
   getCartInfo() {
     this.cartService.getCartItems().subscribe((response) => {
       console.log(response);
       if (response.isSuccess) {
+        this.cartService.getNumberOfItem();
         this.cartItems = response.data as CartDto[];
         this.totalInvoice = this.cartItems.reduce((accumulator, obj) => {
           return accumulator + obj.totalPrice;
@@ -73,7 +75,6 @@ export class CartComponent implements OnInit {
         this.toastr.warning(response.message);
       }
     });
-    
-    this.cartService.getNumberOfItem();
+
   }
 }

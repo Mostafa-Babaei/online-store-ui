@@ -12,10 +12,12 @@ import { AddCategoryComponent } from './admin/category/add-category/add-category
 import { ListCategoryComponent } from './admin/category/list-category/list-category.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ListOrderComponent } from './admin/order/list-order/list-order.component';
+import { AddImageProductComponent } from './admin/product/add-image-product/add-image-product.component';
 import { AddProductComponent } from './admin/product/add-product/add-product.component';
 import { ListProductComponent } from './admin/product/list-product/list-product.component';
 import { ListRoleComponent } from './admin/role/list-role/list-role.component';
 import { AddNewUserComponent } from './admin/user/add-new-user/add-new-user.component';
+import { EditUserComponent } from './admin/user/edit-user/edit-user.component';
 import { ListUserComponent } from './admin/user/list-user/list-user.component';
 import { AppComponent } from './app.component';
 import { ChangePasswordComponent } from './customer/change-password/change-password.component';
@@ -24,6 +26,7 @@ import { ProfileComponent } from './customer/profile/profile.component';
 import { CartComponent } from './home/cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { InvoiceComponent } from './home/invoice/invoice.component';
+import { ProductDetailsComponent } from './home/product-details/product-details.component';
 import { AccessDeniedComponent } from './share/accessDenied/access-denied/access-denied.component';
 import { NotfoundComponent } from './share/notfound/notfound.component';
 import { AdminLayoutComponent } from './_layout/admin-layout/admin-layout.component';
@@ -40,12 +43,13 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: "", component: HomeComponent, pathMatch: 'full' },
-      // { path: "", component: HomeComponent},
-      { path: "Home/:catId", component: HomeComponent },
+      { path: "Home", component: HomeComponent },
+      // { path: "Home/:catId", component: HomeComponent },
       { path: "AccessDenied", component: AccessDeniedComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
       { path: "404", component: NotfoundComponent },
+      { path: "productDetails/:id", component: ProductDetailsComponent },
       { path: "cart", component: CartComponent, canActivate: [LoginGuardService] },
       { path: "invoice", component: InvoiceComponent, canActivate: [LoginGuardService] },
       { path: "forget-password", component: ForgetPasswordComponent }
@@ -88,10 +92,12 @@ const routes: Routes = [
 
       { path: "ListProduct", component: ListProductComponent },
       { path: "AddProduct", component: AddProductComponent },
+      { path: "AddImageProduct/:id", component: AddImageProductComponent },
       { path: "Product/:id/Edit", component: AddCategoryComponent },
 
       { path: "ListRole", component: ListRoleComponent },
       { path: "AddUser", component: AddNewUserComponent },
+      { path: "EditUser/:id", component: EditUserComponent },
       { path: "ListUser", component: ListUserComponent }
 
     ]

@@ -28,32 +28,32 @@ export class ProductService {
   }
 
   addProduct(addModel: any): Observable<Apiresult> {
-    const HttpUploadOptions = {
-      headers: new HttpHeaders({ "Content-Type": "multipart/form-data" })
-    }
-    const formData = new FormData();
-    formData.append("productImage", addModel.productImage);
-    formData.append("categoryId", addModel.categoryId);
-    formData.append("brandId", addModel.brandId);
-    formData.append("price", addModel.price);
-    formData.append("isActive", addModel.isActive);
-    formData.append("title", addModel.title);
-    formData.append("description", addModel.description);
-
-    return this.http.post<Apiresult>(this.apiConfig + "/api/Product/addProduct", formData, HttpUploadOptions);
+    return this.http.post<Apiresult>(this.apiConfig + "/api/Product/addProduct", addModel);
   }
 
+  getProduct(productId: number) {
+    return this.http.get<Apiresult>(this.apiConfig + "/api/Product/Get?id=" + productId);
+  }
 
   deleteProduct(id: number): Observable<Apiresult> {
     return this.http.delete<Apiresult>(this.apiConfig + "/api/Product/deleteProduct?id=" + id);
   }
 
   changeStateProduct(id: number): Observable<Apiresult> {
-    return this.http.put<Apiresult>(this.apiConfig + "/api/Product/ChangeStateOfProduct", id);
+    return this.http.put<Apiresult>(this.apiConfig + "/api/Product/ChangeStateOfProduct?id=" + id, null);
   }
 
   editProduct(): Observable<Apiresult> {
     return this.http.get<Apiresult>(this.apiConfig + "/api/Product/editProduct");
+  }
+
+  uploadProductImage(img: File, productId: number) {
+
+    var formData = new FormData();
+    formData.append("ProductImage", img, img.name);
+
+
+    return this.http.post<Apiresult>(this.apiConfig + "/api/Product/UploadImageOfProduct/" + productId, formData);
   }
 
 }

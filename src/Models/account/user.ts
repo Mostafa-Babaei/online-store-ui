@@ -1,4 +1,7 @@
+import { SelectItem } from "../common/select-item";
+
 export class User {
+     id: string;
      userId: string;
      fullname: string;
      registerAt: Date;
@@ -9,5 +12,5 @@ export class User {
      avatar: string;
      nationalCode: string;
      isActive: boolean;
-     role: string;
+     role: SelectItem[];
 }
