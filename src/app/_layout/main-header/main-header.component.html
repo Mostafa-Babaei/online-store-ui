@@ -1,0 +1,97 @@
+<header>
+    <div class="px-3 py-2 text-bg-dark">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-end ">
+
+                <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                    <img class="" src="/assets/Image/Logo32.png" alt="" width="32" height="32">
+                    <span class="m-2">
+                        فروشگاه آنلاین
+                    </span>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto my-2 justify-content-lg-end my-md-0 text-small">
+
+
+                    <!-- <li class="float-left">
+                        <a routerLink="cart"
+                            class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                            <i class="bi bi-cart4" style="font-size:24px"></i>
+                            <span class='badge badge-warning' id='lblCartCount'> 5 </span>
+                        </a>
+                    </li> -->
+                    <!-- 
+                    <li class="float-left">
+                        <a routerLink="cart"
+                            class="btn btn-sm btn-outline-success d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+
+                            <i class="bi bi-cart4" style="font-size:24px"></i>
+                            <span class='badge badge-warning' id='lblCartCount'> 5 </span>
+                            سبد خرید
+                        </a>
+                    </li> -->
+                    <li class="float-left">
+                        <app-cart-header></app-cart-header>
+                    </li>
+                    <li *ngFor="let item of menu">
+                        <a routerLink="./Home" [queryParams]="{catId:item.id}"
+                            class="nav-link text-white">{{item.categoryName}}</a>
+                        <!-- <a href="/Home?catId={{item.id}}"  class="nav-link text-white">{{item.categoryName}}</a> -->
+                    </li>
+                    <!--                     
+                    <li>
+                        <a routerLink="" class="nav-link text-white">
+                            <i class="d-block bi bi-shop mx-auto mb-1 text-center"></i>
+                            خانه
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="Home" class="nav-link text-white">
+                            <i class="d-block bi bi-shop mx-auto mb-1 text-center"></i>
+                            فروشگاه
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="Home" class="nav-link text-white">
+                            <i class="d-block bi bi-cart4 mx-auto mb-1 text-center"></i>
+                            سبد خرید
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="Home" class="nav-link text-white">
+                            <i class="d-block bi bi-send-fill mx-auto mb-1 text-center"></i>
+                            ارتباط با ما
+                        </a>
+                    </li> -->
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="px-3 py-2 border-bottom mb-3">
+        <div class="container d-flex flex-wrap justify-content-center">
+            <div class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
+                <!-- <input type="search" class="form-control" placeholder="جستجوی محصولات ..." aria-label="Search"> -->
+                <div class="input-group">
+                    <div class="form-outline">
+                        <input type="search" id="searchText" name="serachText" [(ngModel)]="searchText"
+                            class="form-control" placeholder="جستجوی محصولات ..." />
+                    </div>
+                    <a routerLink="./Home" [queryParams]="{searchText:searchText}" type="button"
+                        class="btn btn-primary">
+                        <i class="bi bi-search"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="nav navbar-nav mr-2">
+                <!-- <button type="button" class="btn btn-light text-dark me-2"></button>
+          <button type="button" class="btn btn-primary">Sign-up</button> -->
+                <app-auth-partial></app-auth-partial>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="b-example-divider"></div>

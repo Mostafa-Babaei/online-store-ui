@@ -1,0 +1,84 @@
+<div class="container">
+  <main>
+    <div class="py-2 text-center">
+      <!-- <img class="d-block mx-auto mb-4" src="/src/assets/Image/Logo16.png" alt="" width="72" height="57"> -->
+      <i class="bi bi-cart4" style='font-size:3em;'></i>
+      <h2>سبد خرید</h2>
+      <div class="alert alert-success py-3 my-2">
+        <h5>کاربر عزیز ، در صورت اطمینان از کالاهای انتخابی ، لطفا سفارش خود را نهایی کنید</h5>
+      </div>
+    </div>
+
+    <div class="row g-6 justify-content-center text-center">
+      
+      <div *ngIf="!cartItems || cartItems.length==0" class="alert alert-danger">
+        <div class="alert alert-danger">
+
+          <h2>
+            <i class="bi bi-emoji-frown"></i>
+            سبد خرید شما خالیست
+          </h2>
+          <p>برای مشاهده محصولات به فروشگاه مراجعه کنید</p>
+        </div>
+        <a routerLink="/" class="btn btn-info">فروشگاه</a>
+      </div>
+
+
+      <div *ngIf="cartItems.length>0" class="col-md-6 col-lg-6 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">سبد خرید شما</span>
+          <span class="badge bg-primary rounded-pill">{{cartItems.length}}</span>
+        </h4>
+        <ul class="list-group mb-3">
+
+          <li *ngFor="let item of cartItems;let i=index"
+            class="list-group-item d-flex justify-content-between bg-light">
+            <div class="">
+              <h6 class="my-0 text-left">
+                <a (click)="removeItem(i)">
+                  <i class="bi bi-trash text-danger"></i>
+                </a>
+                {{item.title}}
+              </h6>
+              <div class="form-floating">
+                <input type="number" min="1" (change)="changeNumberOfItem(item)"
+                  class="form-control form-control-sm my-1" [(ngModel)]="item.count">
+                <label for="floatingPassword">تعداد محصول</label>
+              </div>
+            </div>
+            <span class="text-success">{{item.totalPrice| number: '3.'}} تومان</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>جمع مبلغ (تومان)</span>
+            <strong>{{totalInvoice| number: '3.'}}</strong>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>تخفیف (تومان)</span>
+            <strong>0</strong>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span> قابل پرداخت(تومان)</span>
+            <strong>{{totalInvoice | number: '3.'}}</strong>
+          </li>
+        </ul>
+
+        <div class="card p-2 mb-2">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="کد تخفیف">
+            <a class="btn btn-secondary" (click)="computeDiscount()">اعمال</a>
+          </div>
+        </div>
+
+        <div class="d-grid gap-3 mb-3">
+          <a class="btn btn-success btn-block" (click)="submitOrder()">
+            ثبت سفارش
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+
+</div>

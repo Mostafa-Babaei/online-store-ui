@@ -1,0 +1,36 @@
+<a routerLink="/Admin/AddCategory" class="btn btn-info m-2">ثبت دسته بندی</a>
+
+<div class="col-md-10 p-2">
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">دسته بندی</th>
+                <th scope="col">وضعیت</th>
+                <th scope="col">عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listOfCategory;index as i">
+                <th scope="row">{{i+1}}</th>
+                <td>{{item.categoryName}}</td>
+                <td>
+                    <i *ngClass="" class="bi bi-check text-success"></i>
+                    {{item.isEnable}}
+                </td>
+                <td>
+                    <a routerLink="">
+                        <i class="bi bi-edit"></i>
+                        ویرایش
+                </a>
+                    
+                    <a (click)="removeCategory(item.id)" class="btn btn-danger btn-xs">
+                        <i class="bi bi-trash"></i>
+                        حذف
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,93 @@
+<div class="card">
+
+    <div class="card-body mx-4"  *ngIf="!orderDto && loadComplate " >
+        <div  class="alert alert-danger">
+            <div class="alert alert-danger">
+    
+              <h2>
+                <i class="bi bi-emoji-frown"></i>
+                سفارش با شماره سفارش {{orderNumber}} یافت نشد
+              </h2>
+              <p>برای مشاهده محصولات به فروشگاه مراجعه کنید</p>
+            </div>
+            <a routerLink="/" class="btn btn-info">بازگشت به فروشگاه</a>
+          </div>
+    </div>
+
+    <div class="card-body mx-4" *ngIf="orderDto && loadComplate">
+        <div class="container">
+            <div class="alert alert-success my-5 mx-5 text-center">
+                <p class=" " style="font-size: 30px;">
+                    <i class="bi bi-emoji-smile"></i>
+                    ممنون از خرید شما
+                </p>
+            </div>
+            <div class="row">
+                <ul class="list-unstyled">
+                    <li class="text-muted mt-1"><span class="text-black">شماره فاکتور</span> #12345</li>
+                    <li class="text-black mt-1">April 17 2021</li>
+                </ul>
+                <hr>
+            </div>
+            <div class="row" *ngFor="let item of orderDto.orderItem;let i=index">
+                <div class="col-xl-10">
+                    <p> {{item.product.title}} ( {{item.quantity}}  عدد) </p>
+                </div>
+                <div class="col-xl-2">
+                    <p class="float-end">{{item.totalPrice | number : '3.0'}} تومان
+                    </p>
+                </div>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-xl-10">
+                    <p>جمع مبلغ</p>
+                </div>
+                <div class="col-xl-2">
+                    <p class="float-end">{{orderDto.price | number : '3.0'}} تومان
+                    </p>
+                </div>
+                <hr style="border: 2px solid black;">
+            </div>
+            <div class="row">
+                <div class="col-xl-10">
+                    <p>تخفبف</p>
+                </div>
+                <div class="col-xl-2">
+                    <p class="float-end">0
+                    </p>
+                </div>
+                <hr style="border: 2px solid black;">
+            </div>
+            <div class="row text-black">
+
+                <div class="col-xl-12">
+                    <p class="float-end fw-bold">قابل پرداخت: {{orderDto.price | number : '3.0'}} تومان
+                    </p>
+                </div>
+                <hr style="border: 2px solid black;">
+            </div>
+            
+            <div class="row text-black" >
+                <div class="col-xl-12 my-2" *ngIf="!orderDto.isPayment">
+                     <a routerLink="/paymentOrder" [queryParams]="{orderNumber:orderDto.orderNumber}" class="btn btn-info">
+                        <i class="bi bi-credit-card"></i>
+                        پرداخت مبلغ سفارش</a> 
+                </div>
+                <div class="col-xl-12 my-2" *ngIf="orderDto.isPayment">
+                    <div class="alet alert-success text-center p-3">
+                        <h3>
+                            سفارش شما تسویه شده است
+                        </h3>
+                    </div>
+                </div>
+                <hr style="border: 2px solid black;">
+            </div>
+             <div class="text-center" style="margin-top: 90px;">
+                <a><u class="text-info"></u></a>
+                <p> </p>
+            </div> 
+
+        </div>
+    </div>
+</div>

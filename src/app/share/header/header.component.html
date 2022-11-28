@@ -1,0 +1,65 @@
+
+
+
+<header>
+    <div class="px-3 py-2 text-bg-dark">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-end ">
+          
+          <app-cart></app-cart>
+          <!-- <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+            <i class="bi bi-shop"></i>
+          </a> -->
+
+          <ul class="nav col-12 col-lg-auto my-2 justify-content-lg-start my-md-0 text-small">
+            <li>
+              <a  routerLink="Home" class="nav-link text-secondary"  >
+                <i class="d-block bi bi-shop mx-auto mb-1 text-center"></i>
+                فروشگاه
+              </a>
+            </li>
+            <li>
+              <a  routerLink="ListCategory" class="nav-link text-white">
+                <i class="d-block bi bi-list-ul mx-auto mb-1 text-center"></i>
+                دسته بندی
+              </a>
+            </li>
+            <li>
+              <a  routerLink="ListBrand" class="nav-link text-white">
+                <i class="d-block bi bi-cart4 mx-auto mb-1 text-center"></i>
+                سفارشات
+              </a>
+            </li>
+            <li>
+              <a  routerLink="ListProduct" class="nav-link text-white">
+                <i class="d-block bi bi-file-ppt mx-auto mb-1 text-center"></i>
+                محصولات
+              </a>
+            </li>
+            <li>
+              <a  routerLink="ListUser" class="nav-link text-white">
+                <i class="d-block bi bi-person-circle mx-auto mb-1 text-center"></i>
+                کاربران
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="px-3 py-2 border-bottom mb-3">
+      <div class="container d-flex flex-wrap justify-content-center">
+        <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
+          <input type="search" class="form-control" placeholder="جستجوی محصولات ..." aria-label="Search">
+        </form>
+
+        <div class="nav navbar-nav mr-2">
+          <!-- <button type="button" class="btn btn-light text-dark me-2"></button>
+          <button type="button" class="btn btn-primary">Sign-up</button> -->
+          <app-auth-partial></app-auth-partial>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="b-example-divider"></div>

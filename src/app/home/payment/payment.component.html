@@ -1,0 +1,28 @@
+<main>
+    <div class="container">
+        <div class="col-md-6">
+
+            <div class="card border-success mb-3" style="max-width: 20rem;">
+                <div class="card-header">پرداخت مبلغ سفارش</div>
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">سفارش شماره {{orderNumber}}</h5>
+                    <h5 class="card-title">پرداخت</h5>
+                    <p class="card-text">
+                        در صورت اطمینان از مبلغ و سفارش لطفا مبلغ سفارش را پرداخت نمائید
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-success mx-2" (click)="paymentOrder()">
+                        <i class="bi bi-credit-card"></i>
+                        پرداخت سفارش
+                    </a>
+
+                    <a class="btn btn-warning mx-2" routerLink="/invoice"  [queryParams]="{orderNumber: orderNumber}">
+                        <i class="bi bi-x-circle"></i>
+                        انصراف
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
