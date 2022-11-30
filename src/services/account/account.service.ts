@@ -70,10 +70,6 @@ export class AccountService {
     return this.http.post<Apiresult>(this.apiConfig + "/api/auth/SetUserRole", role);
   }
 
-  getUserRole(): Observable<Apiresult> {
-    return this.http.get<Apiresult>(this.apiConfig + "/api/auth/GetUserRole");
-  }
-
   changePassword(newPassword: string): Observable<Apiresult> {
     debugger;
     return this.http.put<Apiresult>(this.apiConfig + "/api/auth/ChangeUserPassword?newPassword=" + newPassword, null);
