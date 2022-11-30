@@ -25,6 +25,7 @@ export class ListRoleComponent implements OnInit {
       console.log(response);
       if (response.isSuccess) {
         this.toastr.success(response.message);
+        this.roleName="";
         this.getRoles();
       } else {
         this.toastr.error(response.message);

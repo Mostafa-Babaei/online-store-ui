@@ -1,8 +1,14 @@
 <div *ngIf="this.accountService.isLogined()" class="d-flex">
     <li class="mx-2">
-        <a class="nav-link border px-2" (click)="goToPanel()">
+        <a *ngIf="isCustomer" class="nav-link border px-2" routerLink="/CustomerPanel/Profile">
             <i class="bi bi-person-circle"></i>
-            پنل کاربری
+            پروفایل کاربری
+        </a>
+    </li>
+    <li class="mx-2">
+        <a *ngIf="isAdmin" class="nav-link border px-2" routerLink="/Admin/Dashboard">
+            <i class="bi bi-gear"></i>
+            پنل مدیریت
         </a>
     </li>
     <li class="mx-2">

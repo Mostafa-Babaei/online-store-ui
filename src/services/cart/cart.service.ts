@@ -21,7 +21,7 @@ export class CartService {
   }
 
   removeItemFromCart(productId: number): Observable<Apiresult> {
-    return this.http.delete<Apiresult>(this.apiConfig + "/api/ShoppingCart/RemoveItemFromCart?productId=" + productId);
+    return this.http.delete<Apiresult>(this.apiConfig + "/api/ShoppingCart/RemoveItemFromCart/" + productId);
   }
 
   removeAllItemFromCart(): Observable<Apiresult> {

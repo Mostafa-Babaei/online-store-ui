@@ -49,7 +49,7 @@ const routes: Routes = [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
       { path: "404", component: NotfoundComponent },
-      { path: "paymentOrder", component: PaymentComponent},
+      { path: "paymentOrder", component: PaymentComponent },
       { path: "productDetails/:id", component: ProductDetailsComponent },
       { path: "cart", component: CartComponent, canActivate: [LoginGuardService] },
       { path: "invoice", component: InvoiceComponent, canActivate: [LoginGuardService] },
@@ -62,7 +62,7 @@ const routes: Routes = [
   {
     path: 'CustomerPanel',
     component: CustomerLayoutComponent,
-    //  canActivateChild: [LoginGuardService, CustomerGuardService],
+    canActivateChild: [CustomerGuardService],
     children: [
       { path: "Profile", component: ProfileComponent },
       { path: "OrdersOfCustomer", component: OrderOfCustomerComponent },

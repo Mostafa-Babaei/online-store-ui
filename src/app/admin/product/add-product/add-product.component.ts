@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BrandDto } from 'src/Models/brand/brand-dto';
-import { AddCategoryDto } from 'src/Models/category/add-category-dto.model';
 import { Category } from 'src/Models/category/category.model';
 import { AddProductDto } from 'src/Models/product/add-product-dto';
 import { BrandService } from 'src/services/brand/brand.service';
@@ -58,10 +57,9 @@ export class AddProductComponent implements OnInit {
   // }
 
   addProduct() {
-    debugger;
     this.productServide.addProduct(this.productDto).subscribe((response) => {
       if (response.isSuccess) {
-        this.router.navigate(['َ/Admin/ListProduct']);
+        this.router.navigate(['/Admin/ListProduct']);
         this.toastr.success(response.message);
       } else {
         this.toastr.error(response.message);

@@ -25,7 +25,7 @@ export class AddCategoryComponent implements OnInit {
       console.log(response);
       if (response.isSuccess) {
         this.toastr.success(response.message);
-        this.router.navigate(['/ListCategory']);
+        this.router.navigate(['/Admin/ListCategory']);
       } else {
         this.toastr.error(response.message);
       }

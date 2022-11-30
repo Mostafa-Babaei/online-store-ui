@@ -19,12 +19,10 @@ export class AddBrandComponent implements OnInit {
   }
 
   addNewBrand() {
-    console.log(this.addBrand);
     this.brandService.addBrand(this.addBrand).subscribe((response) => {
-      console.log(response);
       if (response.isSuccess) {
         this.toastr.success(response.message);
-        this.router.navigate(['/ListBrand']);
+        this.router.navigate(['/Admin/ListBrand']);
       } else {
         this.toastr.error(response.message);
       }

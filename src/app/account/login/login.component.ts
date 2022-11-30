@@ -3,7 +3,6 @@ import { Login } from 'src/Models/account/login.model';
 import { AccountService } from 'src/services/account/account.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Apiresult } from 'src/Models/apiresult';
 import { BrowserStorageService } from 'src/services/share/browser-storage.service';
 import { AddCategoryDto } from 'src/Models/category/add-category-dto.model';
 
@@ -24,7 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginDto = new Login;
     this.loginDto.username = "mostafababaee@gmail.com";
-    this.loginDto.password = "33552038";
+    this.loginDto.password = "";
   }
 
   loginUser() {
@@ -33,7 +32,7 @@ export class LoginComponent implements OnInit {
         if (response.isSuccess) {
           this.toastr.success(response.message);
           this.browserStorageService.setLocal("token", response.data);
-          // window.location.reload();
+          window.location.reload();
           this.router.navigate(['/']);
           return;
         } else {

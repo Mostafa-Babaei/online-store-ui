@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Login } from 'src/Models/account/login.model';
-import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { GlobalConstants } from 'src/Models/common/global-constants';
 import { Apiresult } from 'src/Models/apiresult';
 import { Observable } from 'rxjs';
 import { BrowserStorageService } from '../share/browser-storage.service';
-import { Paging } from 'src/Models/common/paging';
 import { Register } from 'src/Models/account/register.model';
 import { User } from 'src/Models/account/user';
 
@@ -53,9 +52,9 @@ export class AccountService {
   changeStateOfUsers(userId: string): Observable<Apiresult> {
     return this.http.put<Apiresult>(this.apiConfig + "/api/auth/ChangeState?userId=" + userId, null);
   }
-
-  logout() {
-    this.browserStorageService.removeLocal("token");
+  
+  logout(): Observable<Apiresult> {
+    return this.http.get<Apiresult>(this.apiConfig + "/api/auth/Logout");
   }
 
   getAllRole() {
@@ -71,7 +70,6 @@ export class AccountService {
   }
 
   changePassword(newPassword: string): Observable<Apiresult> {
-    debugger;
     return this.http.put<Apiresult>(this.apiConfig + "/api/auth/ChangeUserPassword?newPassword=" + newPassword, null);
   }
 
