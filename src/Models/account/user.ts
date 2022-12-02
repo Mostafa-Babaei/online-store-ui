@@ -1,6 +1,6 @@
 import { SelectItem } from "../common/select-item";
 
-export class User {
+export interface User {
      id: string;
      userId: string;
      fullname: string;

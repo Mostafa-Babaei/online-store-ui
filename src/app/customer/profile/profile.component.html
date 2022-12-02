@@ -19,9 +19,9 @@
 									(change)="onchangeImage($event)">
 								<small>برای تغییر عکس پروفایل بر روی تصویر کلیک کنید</small>
 								<div class="mt-3">
-									<h4>{{user.fullname}}</h4>
-									<p class="text-secondary mb-1">{{user.email}}</p>
-									<p class="text-muted font-size-sm">{{user.mobile}}</p>
+									<h4 *ngIf="user && user.fullname">{{user.fullname}}</h4>
+									<p class="text-secondary mb-1"*ngIf="user && user.email">{{user.email}}</p>
+									<p class="text-muted font-size-sm" *ngIf="user && user.mobile">{{user.mobile}}</p>
 								</div>
 							</div>
 							<hr class="my-4">

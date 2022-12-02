@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { map } from 'rxjs';
 import { User } from 'src/Models/account/user';
 import { GlobalConstants } from 'src/Models/common/global-constants';
 import { AccountService } from 'src/services/account/account.service';
@@ -12,33 +11,34 @@ import { BrowserStorageService } from 'src/services/share/browser-storage.servic
   templateUrl: './auth-partial.component.html',
   styleUrls: ['./auth-partial.component.css']
 })
+
 export class AuthPartialComponent implements OnInit {
   constructor(private browserStorageService: BrowserStorageService, private toastr: ToastrService,
-    private router: Router, public accountService: AccountService) { }
+    private router: Router, public accountService: AccountService, private storageService: BrowserStorageService) { }
 
   isLoggedUser: boolean = false;
   isCustomer: boolean = false;
   isAdmin: boolean = false;
   panelRoot: string;
-
+  roles: string[];
   adminRole: string = GlobalConstants.AdminRole;
   customerRole: string = GlobalConstants.CustomerRole;
 
+
   ngOnInit(): void {
     this.isLoggedUser = this.accountService.isLogined();
-    this.checkUser();
+    this.getRole();
+    this.isAdmin = this.checkRoleUser(this.adminRole);
+    this.isCustomer = this.checkRoleUser(this.customerRole);
   }
 
-  // logout() {
-  //   this.browserStorageService.removeLocal("token");
-  //   this.router.navigate(['/'])
-  //   window.location.reload;
-  // }
   logout() {
+    this.browserStorageService.removeLocal("token");
+    this.browserStorageService.removeLocal("rolesOfUser");
+    this.browserStorageService.removeLocal("numberOfCatItem");
     this.accountService.logout().subscribe((response) => {
       if (response.isSuccess) {
         this.router.navigate(['/']);
-        this.browserStorageService.removeLocal("token");
         window.location.reload();
         return;
       } else {
@@ -47,44 +47,96 @@ export class AuthPartialComponent implements OnInit {
     });
   }
 
-  user: User;
-  // goToPanel() {
-  //   debugger;
-  //   this.accountService.getUser().subscribe((response) => {
-  //     if (response.isSuccess) {
-  //       this.user = response.data as User;
 
-  //       let role = this.user.role.filter(x => x.selected == true)[0];
-  //       if (role && role.text == this.adminRole) {
-  //         this.router.navigate(['/Admin/Dashboard']);
-  //         return;
-  //       }
-  //       if (role && role.text == this.customerRole) {
-  //         this.router.navigate(['/CustomerPanel/Profile']);
-  //         return;
-  //       }
-  //       this.router.navigate(['/']);
+  checkRoleUser(roleName: string): boolean {
+    console.log("check Roles : " + roleName);
+    let roles: string[] = [];
 
-  //     } else {
-  //       this.router.navigate(['/']);
-  //     }
-  //   });
-  // }
+    if (this.accountService.isLogined() == false)
+      return false;
+    console.log("Logined");
 
-  checkUser() {
-    this.accountService.getUser().subscribe((response) => {
-      if (response.isSuccess) {
-        this.user = response.data as User;
-        let role = this.user.role.filter(x => x.text == this.adminRole && x.selected == true);
-        if (role.length > 0) {
-          this.isAdmin = true;
+    if (this.browserStorageService.existKey("rolesOfUser") == false)
+      return false;
+    console.log("rolesOfUser Exist");
+
+    roles = this.browserStorageService.getLocal("rolesOfUser");
+    if (roles.length > 0) {
+      let role = roles.indexOf(roleName);
+      if (role > -1) {
+        console.log(roleName + " : Ok");
+        return true;
+      }
+      return false;
+    }
+    return false;
+
+    // this.accountService.getUserRole().subscribe((response) => {
+    //   if (response.isSuccess) {
+    //     roles = response.data as string[];
+    //     this.browserStorageService.setLocal("rolesOfUser", roles);
+    //   }
+    // });
+
+  }
+
+
+  goToProfile(role: string) {
+
+    this.accountService.isInRole(role).subscribe((response) => {
+      if (response) {
+        if (role == this.adminRole) {
+          this.router.navigate(['/Admin/Dashboard'])
         }
-        role = this.user.role.filter(x => x.text == this.customerRole && x.selected == true);
-        if (role.length > 0) {
-          this.isCustomer = true;
+        if (role == this.customerRole) {
+          this.router.navigate(['/CustomerPanel/Profile'])
         }
+      } else {
+        this.toastr.warning("خطا در بررسی مجوز دسترسی ");
       }
     });
   }
+
+  getRole() {
+    console.log("get Roles");
+    this.accountService.getUserRole().subscribe((Response) => {
+      if (Response.isSuccess) {
+        console.log(Response.data);
+        this.browserStorageService.setLocal("rolesOfUser", Response.data);
+        this.isAdmin = this.checkRoleUser(this.adminRole);
+        this.isCustomer = this.checkRoleUser(this.customerRole);
+      } else {
+        console.log(Response.message);
+      }
+    });
+  }
+
+
+  // checkUser() {
+  //   if (this.accountService.isLogined()) {
+  //     if (this.storageService.existKey("rolesOfUser") == false) {
+  //       this.roles = this.storageService.getLocal("rolesOfUser");
+  //     } else {
+  //       this.accountService.getUserRole().subscribe((response) => {
+  //         if (response.isSuccess) {
+  //           this.roles = response.data as string[];
+  //           this.storageService.setLocal("rolesOfUser", this.roles);
+  //         }
+  //       });
+  //     }
+
+  //     if (this.roles.length > 0) {
+  //       let role = this.roles.indexOf(this.adminRole);
+  //       if (role > -1) {
+  //         this.isAdmin = true;
+  //       }
+  //       role = this.roles.indexOf(this.customerRole);
+  //       if (role > -1) {
+  //         this.isCustomer = true;
+  //       }
+
+  //     }
+  //   }
+  // }
 
 }

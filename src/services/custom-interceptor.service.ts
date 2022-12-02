@@ -32,11 +32,14 @@ export class CustomInterceptorService implements HttpInterceptor {
         })
       )
   }
-  
+
   showError(err: any) {
     switch (err.status) {
       case 500:
         this.toastr.error("خطای سمت سرور ، لطفا بعدا تلاش نمائید ");
+        break;
+      case 400:
+        this.toastr.error("پارامتر های ارسالی نا معتبر است ");
         break;
       case 404:
         this.toastr.error("آدرس مورد نظر یافت نشد ");

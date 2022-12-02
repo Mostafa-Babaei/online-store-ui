@@ -1,17 +1,16 @@
 <div class="card">
 
-    <div class="card-body mx-4"  *ngIf="!orderDto && loadComplate " >
-        <div  class="alert alert-danger">
+    <div class="card-body mx-4" *ngIf="!orderDto && loadComplate ">
+        <div class="alert alert-danger">
             <div class="alert alert-danger">
-    
-              <h2>
-                <i class="bi bi-emoji-frown"></i>
-                سفارش با شماره سفارش {{orderNumber}} یافت نشد
-              </h2>
-              <p>برای مشاهده محصولات به فروشگاه مراجعه کنید</p>
+                <h2>
+                    <i class="bi bi-emoji-frown"></i>
+                    سفارش با شماره سفارش {{orderNumber}} یافت نشد
+                </h2>
+                <p>برای مشاهده سفارشات خود به پنل کاربری مراجعه کنید</p>
             </div>
-            <a routerLink="/" class="btn btn-info">بازگشت به فروشگاه</a>
-          </div>
+            <a routerLink="/CustomerPanel/OrdersOfCustomer" class="btn btn-info">لیست سفارشات شما</a>
+        </div>
     </div>
 
     <div class="card-body mx-4" *ngIf="orderDto && loadComplate">
@@ -31,7 +30,7 @@
             </div>
             <div class="row" *ngFor="let item of orderDto.orderItem;let i=index">
                 <div class="col-xl-10">
-                    <p> {{item.product.title}} ( {{item.quantity}}  عدد) </p>
+                    <p> {{item.product.title}} ( {{item.quantity}} عدد) </p>
                 </div>
                 <div class="col-xl-2">
                     <p class="float-end">{{item.totalPrice | number : '3.0'}} تومان
@@ -67,12 +66,13 @@
                 </div>
                 <hr style="border: 2px solid black;">
             </div>
-            
-            <div class="row text-black" >
+
+            <div class="row text-black">
                 <div class="col-xl-12 my-2" *ngIf="!orderDto.isPayment">
-                     <a routerLink="/paymentOrder" [queryParams]="{orderNumber:orderDto.orderNumber}" class="btn btn-info">
+                    <a routerLink="/paymentOrder" [queryParams]="{orderNumber:orderDto.orderNumber}"
+                        class="btn btn-info">
                         <i class="bi bi-credit-card"></i>
-                        پرداخت مبلغ سفارش</a> 
+                        پرداخت مبلغ سفارش</a>
                 </div>
                 <div class="col-xl-12 my-2" *ngIf="orderDto.isPayment">
                     <div class="alet alert-success text-center p-3">
@@ -83,10 +83,10 @@
                 </div>
                 <hr style="border: 2px solid black;">
             </div>
-             <div class="text-center" style="margin-top: 90px;">
+            <div class="text-center" style="margin-top: 90px;">
                 <a><u class="text-info"></u></a>
                 <p> </p>
-            </div> 
+            </div>
 
         </div>
     </div>

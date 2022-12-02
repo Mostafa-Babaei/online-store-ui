@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BrowserStorageService } from 'src/services/share/browser-storage.service';
 import { AddCategoryDto } from 'src/Models/category/add-category-dto.model';
+import { LoginResult } from 'src/Models/account/login-result';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ import { AddCategoryDto } from 'src/Models/category/add-category-dto.model';
 export class LoginComponent implements OnInit {
   logginedUser: boolean = false;
   loginDto: Login;
-  addCategory:AddCategoryDto;
+  loginResult: LoginResult;
+  addCategory: AddCategoryDto;
   constructor(private accountService: AccountService, private router: Router,
     private toastr: ToastrService, private browserStorageService: BrowserStorageService) {
 
@@ -32,16 +34,15 @@ export class LoginComponent implements OnInit {
         if (response.isSuccess) {
           this.toastr.success(response.message);
           this.browserStorageService.setLocal("token", response.data);
-          window.location.reload();
-          this.router.navigate(['/']);
-          return;
+          this.router.navigate(['/'])
+          .then(() => {
+            window.location.reload();
+          });
         } else {
           this.toastr.error(response.message);
         }
       });
   }
-
-
 
   resetPassword() {
     let token = this.browserStorageService.getLocal("token");

@@ -15,18 +15,28 @@ export class OrderService {
 
 
   getAllOrder(page?: number, pageSize?: number): Observable<Apiresult> {
-    return this.http.get<Apiresult>(this.apiConfig + "/api/order/GetOrders?page=" + page);
+    let requestUrl: String = "";
+    requestUrl = this.apiConfig + "/api/order/GetOrders?page=" + page;
+    if (pageSize){
+      requestUrl = requestUrl + "&count=" + pageSize;
+    }
+    return this.http.get<Apiresult>(requestUrl.toString());
   }
 
   getCustomerOrder(page?: number, pageSize?: number): Observable<Apiresult> {
-    return this.http.get<Apiresult>(this.apiConfig + "/api/order/GetOrdersOfUser?page=" + page);
+    let requestUrl: String = "";
+    requestUrl = this.apiConfig + "/api/order/GetOrdersOfUser?page=" + page;
+    if (pageSize){
+      requestUrl = requestUrl + "&count=" + pageSize;
+    }
+    return this.http.get<Apiresult>(requestUrl.toString());
   }
 
   getOrder(orderNumber: string): Observable<Apiresult> {
     return this.http.get<Apiresult>(this.apiConfig + "/api/order/GetOrder?orderNumber=" + orderNumber);
   }
-  
-  paymentOrder(orderNumber:string){
+
+  paymentOrder(orderNumber: string) {
     return this.http.get<Apiresult>(this.apiConfig + "/api/order/PaymentOrder?orderNumber=" + orderNumber);
   }
 }

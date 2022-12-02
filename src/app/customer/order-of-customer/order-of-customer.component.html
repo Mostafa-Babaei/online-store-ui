@@ -14,7 +14,16 @@
 </div>
 
 <main class="form-signin m-auto text-center">
-    <div>
+
+    <div *ngIf="!orders">
+        <div class="alert alert-warning">
+            <h3>
+                سفارشی یافت نشد
+            </h3>
+        </div>
+    </div>
+
+    <div *ngIf="orders">
 
         <table class="table">
             <thead class="table-dark">
@@ -55,6 +64,24 @@
             </tbody>
         </table>
 
+        <div class="col-md-12">
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+
+                    <li class="page-item" [ngClass]="{ 'disabled':dataModel.page==1 }">
+                        <a class="page-link" (click)="getOrders(dataModel.page-1)" tabindex="-1">قبلی</a>
+                    </li>
+
+                    <li class="page-item" *ngFor='let in of counter(dataModel.totalPage) ;let i = index'><a
+                            class="page-link" (click)="getOrders(i+1)">{{i+1}}</a></li>
+
+                    <li class="page-item" [ngClass]="{'disabled':dataModel.page==dataModel.totalPage }">
+                        <a class="page-link" (click)="getOrders(dataModel.page+1)">بعدی</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 
     </div>
 </main>

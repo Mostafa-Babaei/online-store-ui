@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.registerDto = new Register;
   }
 
   registerUser() {
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
       console.log(response);
       if (response.isSuccess) {
         this.toastr.success(response.message);
-        this.router.navigate(['login']);
+        this.router.navigate(['/login']);
       } else {
         this.toastr.error(response.message);
       }

@@ -14,7 +14,10 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService, private toastr: ToastrService, private router: Router) { }
   cartItems: CartDto[];
   totalInvoice: number = 0;
+  loadComplate: boolean;
+
   ngOnInit(): void {
+    this.loadComplate = false;
     this.getCartInfo();
   }
 
@@ -27,7 +30,8 @@ export class CartComponent implements OnInit {
       if (response.isSuccess) {
         this.cartService.setNumberOfItem(0);
         this.toastr.success(response.message);
-        this.router.navigate(['/invoice']);
+        console.log(response.data);
+        this.router.navigate(['/invoice'], { queryParams: { orderNumber: response.data } });
       } else {
         this.toastr.error(response.message);
       }
@@ -48,7 +52,6 @@ export class CartComponent implements OnInit {
   }
 
   removeItem(index: number) {
-    console.log(this.cartItems[index].title);
     this.cartService.removeItemFromCart(this.cartItems[index].productId).subscribe((response) => {
       if (response.isSuccess) {
         this.cartService.getNumberOfItem();
@@ -70,9 +73,10 @@ export class CartComponent implements OnInit {
         this.totalInvoice = this.cartItems.reduce((accumulator, obj) => {
           return accumulator + obj.totalPrice;
         }, 0);
-        this.cartItems.length
+        this.loadComplate = true;
       } else {
         this.toastr.warning(response.message);
+        this.loadComplate = true;
       }
     });
 

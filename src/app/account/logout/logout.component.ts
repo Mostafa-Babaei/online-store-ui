@@ -20,9 +20,11 @@ export class LogoutComponent implements OnInit {
   logout() {
     this.accountService.logout().subscribe((response) => {
       if (response.isSuccess) {
-        this.router.navigate(['/']);
         this.browserStorageService.removeLocal("token");
-         window.location.reload();
+        this.router.navigate(['/'])
+          .then(() => {
+            window.location.reload();
+          });
       } else {
         this.toastr.error("خطا در خروج کاربر اتفاق افتاد ، مجددا امتحان کنید");
       }

@@ -40,6 +40,7 @@ export class ListOrderComponent implements OnInit {
   }
   changePage(newPage: number) {
     this.getorders(newPage);
+ 
   }
   counter(i: number) {
     return new Array(i);

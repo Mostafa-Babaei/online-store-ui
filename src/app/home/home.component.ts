@@ -38,22 +38,6 @@ export class HomeComponent implements OnInit {
     this.homeRequest.brandFilter = 0;
     this.homeRequest.searchText = "";
 
-
-    // this.catId = +(this.activeRoute.snapshot.queryParamMap.get('catId') ?? 0);
-    // if (this.catId && this.catId > 0) {
-    //   this.homeRequest.categoryFilter = this.catId;
-    // }
-
-    // this.brandId = +(this.activeRoute.snapshot.queryParamMap.get('brandId') ?? 0);
-    // if (this.brandId) {
-    //   this.homeRequest.brandFilter = this.brandId;
-    // }
-
-    // this.searchText = this.activeRoute.snapshot.queryParamMap.get('searchText') ?? '';
-    // if (this.searchText) {
-    //   this.homeRequest.searchText = this.searchText;
-    // }
-    console.log("catId : " + this.catId + " brandId : " + this.brandId + " searchText : " + this.searchText);
     this.activeRoute.queryParams.subscribe((queryPrams) => {
       this.homeRequest.categoryFilter = queryPrams['catId'] ?? 0;
       this.homeRequest.brandFilter = queryPrams['brandId'] ?? 0;
@@ -73,8 +57,6 @@ export class HomeComponent implements OnInit {
 
   getParams() {
     this.activeRoute.queryParams.subscribe((queryPrams) => {
-      debugger;
-
       console.log("queryParams : " + queryPrams);
     })
   }
@@ -105,9 +87,8 @@ export class HomeComponent implements OnInit {
   }
 
 
-  getProductByFilter(homeRequest?: HomeRequestDto) {
+  getProductByFilter() {
     this.productServide.getAllProductByFilter(this.homeRequest).subscribe((response) => {
-      debugger;
       if (response.isSuccess) {
         let temp: HomeRequestDto = response.data as HomeRequestDto;
         this.listOfProduct = temp.products;

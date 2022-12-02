@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Login } from 'src/Models/account/login.model';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { GlobalConstants } from 'src/Models/common/global-constants';
 import { Apiresult } from 'src/Models/apiresult';
 import { Observable } from 'rxjs';
@@ -52,7 +52,7 @@ export class AccountService {
   changeStateOfUsers(userId: string): Observable<Apiresult> {
     return this.http.put<Apiresult>(this.apiConfig + "/api/auth/ChangeState?userId=" + userId, null);
   }
-  
+
   logout(): Observable<Apiresult> {
     return this.http.get<Apiresult>(this.apiConfig + "/api/auth/Logout");
   }
@@ -67,6 +67,10 @@ export class AccountService {
 
   SetUserRole(role: string) {
     return this.http.post<Apiresult>(this.apiConfig + "/api/auth/SetUserRole", role);
+  }
+
+  getUserRole() {
+    return this.http.get<Apiresult>(this.apiConfig + "/api/auth/GetUserRole");
   }
 
   changePassword(newPassword: string): Observable<Apiresult> {
@@ -85,7 +89,6 @@ export class AccountService {
     return this.http.get<Apiresult>(this.apiConfig + "/api/auth/GetCurrentUser");
   }
 
-
   getUserById(id: string): Observable<Apiresult> {
     return this.http.get<Apiresult>(this.apiConfig + "/api/auth/GetCurrentUserById?userId=" + id);
   }
@@ -98,7 +101,6 @@ export class AccountService {
     return this.http.put<Apiresult>(this.apiConfig + "/api/auth/UpdateUserById", user);
   }
 
-
   setAvatarUser(avatar: File) {
     let formData: FormData = new FormData();
     formData.append('avatar', avatar, avatar.name);
@@ -107,6 +109,10 @@ export class AccountService {
 
   addNewUser(user: Register): Observable<Apiresult> {
     return this.http.post<Apiresult>(this.apiConfig + "/api/auth/AddNewUser", user);
+  }
+
+  isInRole(roleName: string): Observable<Apiresult> {
+    return this.http.get<Apiresult>(this.apiConfig + "/api/auth/IsInRole?role=" + roleName);
   }
 
 }

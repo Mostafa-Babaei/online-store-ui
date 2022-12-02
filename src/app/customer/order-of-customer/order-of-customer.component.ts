@@ -25,7 +25,6 @@ export class OrderOfCustomerComponent implements OnInit {
   getOrders(pageNum: number) {
     this.orderService.getCustomerOrder(pageNum).subscribe((response) => {
       if (response.isSuccess) {
-        debugger;
         this.dataModel = response.data as Paging;
         this.orders = this.dataModel.pageData as OrderDto[];
         console.log(this.orders);
@@ -33,6 +32,9 @@ export class OrderOfCustomerComponent implements OnInit {
         this.toastr.error(response.message);
       }
     });
+  }
+  counter(i: number) {
+    return new Array(i);
   }
 
   goNextPage() {
